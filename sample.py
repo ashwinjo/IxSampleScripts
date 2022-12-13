@@ -1,5 +1,6 @@
 from ixnetwork_restpy import SessionAssistant
 from typing import List
+import time
 
 
 class TestL1Settings(object):
@@ -115,24 +116,26 @@ class TestL1Settings(object):
         """_summary_
         """
         vports = kwargs.get("vports")
-        operation =  kwargs.get("source_value")
+        loopback_mode =  kwargs.get("loopback_mode")
+        
         for vport_name in vports:
             vport = self.ixnetwork.Vport.find(Name=vport_name)
             print(
                 f"Loopback mode: {vport.L1Config.NovusHundredGigLan.LoopbackMode}")
-            vport.L1Config.find().NovusHundredGigLan.find().LoopbackMode = operation
+            vport.L1Config.find().NovusHundredGigLan.find().LoopbackMode = loopback_mode
             print(
                 f"Loopback mode: {vport.L1Config.NovusHundredGigLan.LoopbackMode}")
 
     def vport_send_undersize_packets(self, **kwargs):
         """_summary_
         """
-        create_traffic_item = kwargs.get("create_traffic_item")
-        traffic_item_name = kwargs.get("traffic_item_name")
-        undersize = kwargs.get("undersize")
-        runt = kwargs.get("runt")
-        crc = kwargs.get("crc")
-        desired_frame_size = kwargs.get("desired_frame_size")
+        create_traffic_item = kwargs.get("create_traffic_item", False)
+        traffic_item_name = kwargs.get("traffic_item_name", "TI")
+        undersize = kwargs.get("undersize", False)
+        runt = kwargs.get("runt", False)
+        crc = kwargs.get("crc", False)
+        desired_frame_size = kwargs.get("desired_frame_size", "128")
+        
         # get topology objects
 
         topology1 = self.ixnetwork.Topology.find()[0]
@@ -168,156 +171,73 @@ if __name__ == "__main__":
     tl1s = TestL1Settings(ipaddr='10.36.236.121', user='admin',
                           password='Kimchi123Kimchi123!', session_id='12', 
                           clear_config=False)
-
-
-
-    configuration_template = {
-        "functions": [
-        {
-            "method_name": tl1s.vport_laser_on_off,
-            "kwargs": {
-                "vports": ["Port_1"],
-                "operation": "on"
-            },
-            "repeat": 1,
-            "enable": True,
-            "wait": 5 #TODO
-        },
-        {
-            "method_name": tl1s.vport_laser_on_off,
-            "kwargs": {
-                "vports": ["Port_1"],
-                "operation": "off"
-            },
-            "repeat": 1,
-            "enable": True,
-            "wait": 5
-        },
-        {
-            "method_name": tl1s.vport_link_up_down,
-            "kwargs": {
-                "vports": ["Port_1"],
-                "operation": "up"
-            },
-            "repeat": 3,
-            "enable": True
-        },
-        {
-            "method_name": tl1s.vport_link_up_down,
-            "kwargs": {
-                "vports": ["Port_1"],
-                "operation": "down"
-            },
-            "repeat": 3,
-            "enable": True
-        },
-        {
-            "method_name": tl1s.vport_insert_local_fault,
-            "kwargs": {
-                "vports": ["Port_1"],
-                "source_value": "localFault",
-                "dest_value": "remoteFault",
-                "send_sets_mode": "typeAOnly"
-            },
-            "repeat": 1,
-            "enable": True
-        },
-        {
-            "method_name": tl1s.vport_increment_decrement_frequency,
-            "kwargs": {
-                "vports": ["Port_1"],
-                "operation": "increment",
-                "step_size": 75
-            },
-            "repeat": 1,
-            "enable": True
-        },
-        {
-            "method_name": tl1s.vport_send_undersize_packets,
-            "kwargs": {
-                "traffic_item_name" : "TI",
-                "undersize" : True,
-                "runt" : False,
-                "crc" : False, 
-                "desired_frame_size" : 40 
-            },
-            "repeat": 1,
-            "enable": True
-        },
-        {
-            "method_name": tl1s.vport_send_undersize_packets,
-            "kwargs": {
-                "traffic_item_name" : "TI",
-                "runt" : True,
-                "desired_frame_size" : 60
-            },
-            "repeat": 1,
-            "enable": True
-        },
-        {
-            "method_name": tl1s.vport_send_undersize_packets,
-            "kwargs": {
-                "traffic_item_name" : "TI",
-                "crc" : True, 
-            },
-            "repeat": 1,
-            "enable": True
-        }
-                ]
-    }
-
-
-    for vals in configuration_template["functions"]:
-        method_name = vals["method_name"].__name__
-        method_object = vals["method_name"]
-        enabled = vals["enable"]
-        params = vals["kwargs"]
+    
+       
+    def link_up_down(vports, wait_interval, repetition):
         
-        if enabled:
-            for iteration in range(vals["repeat"]):
-                
-                if method_name in ["vport_laser_on_off", "vport_link_up_down", "vport_clock_source_faults"]:
-                    method_object(vports=params["vports"], operation=params["operation"])
-                    
-                if method_name in ["vport_insert_local_fault"]:
-                    method_object(vports=params["vports"], 
-                                source_value=params["source_value"],
-                                dest_value=params["dest_value"],
-                                send_sets_mode=params["send_sets_mode"])
-                    
-                if method_name in ["vport_increment_decrement_frequency"]:
-                    method_object(vports=params["vports"], 
-                                operation=params["operation"],
-                                step_size=params["step_size"])
-                    
-                if  method_name in ['vport_send_undersize_packets']:
-                    method_object(create_traffic_item = params.get("create_traffic_item", False),
-                                traffic_item_name=params.get("create_traffic_item", "TI"), 
-                                undersize=params.get("undersize", False), 
-                                runt=params.get("runt", False),
-                                crc=params.get("crc", False), 
-                                desired_frame_size=params.get("desired_frame_size", 128))
+        for _ in range(repetition):
+            tl1s.vport_link_up_down(vports=vports, operation="down")
+            time.sleep(wait_interval)
+            tl1s.vport_link_up_down(vports=vports, operation="up")
             
             
+    def laser_on_off(vports, wait_interval, repetition):
+        
+        for _ in range(repetition):
+            tl1s.vport_link_up_down(vports=vports, operation="down")
+            time.sleep(wait_interval)
+            tl1s.vport_link_up_down(vports=vports,  operation="up")
 
-        """
-        # print (tl1s.vport_laser_on_off(vports=['Port_1'], operation="on"))
-
-        # print (tl1s.vport_link_up_down(vports=['Port_1'], operation="down"))
-        # print (tl1s.vport_link_up_down(vports=['Port_2'], operation="down"))
-
-        # print (tl1s.vport_link_up_down(vports=['Port_1'], operation="up"))
-        # print (tl1s.vport_link_up_down(vports=['Port_2'], operation="up"))
-
-        # tl1s.vport_increment_decrement_frequency(vports=['Port_1'], operation="increment", step123=70)
-        # tl1s.vport_clock_source_faults(vports=['Port_1','Port_2'], loopback_mode='lineLoopback')
-
-        #tl1s.vport_insert_local_fault(vports=['Port_1'], ssource_value='localFault',dest_value='remoteFault',send_sets_mode="typeAOnly")
-
-        # tl1s.vport_send_undersize_packets(traffic_item_name="TI", undersize=True, desired_frame_size=60)
-        # tl1s.vport_send_undersize_packets(traffic_item_name="TI", runt=True, desired_frame_size=45)
-        # tl1s.vport_send_undersize_packets(traffic_item_name="TI", crc=True, desired_frame_size=128)
-
-        """
+    def vport_clock_source_faults_toggle(vports, wait_interval, repetition, toggle_states=["none", "lineLoopback", "internalLoopback"]):
+        for _ in range(repetition):
+            for state in toggle_states:
+                tl1s.vport_clock_source_faults(vports=vports, loopback_mode=state)
+                time.sleep(wait_interval)
+            
+            
+    def generate_faults(vports, wait_interval, repetition):
+        for _ in range(repetition):
+            tl1s.vport_insert_local_fault(vports=vports, source_value='localFault',dest_value='remoteFault',send_sets_mode="typeAOnly")
+            time.sleep(wait_interval)
+            tl1s.vport_insert_local_fault(vports=vports, source_value='localFault',dest_value='remoteFault',send_sets_mode="typeBOnly")
+        
+    def generate_crc_error_traffic(wait_interval, repetition):
+        for _ in range(repetition):
+            tl1s.vport_send_undersize_packets(traffic_item_name="TI", crc=True, desired_frame_size=128)
+            time.sleep(wait_interval)
+            tl1s.vport_send_undersize_packets(traffic_item_name="TI", crc=False, desired_frame_size=128)
+    
+    def generate_undersize_packets_traffic(wait_interval, repetition):
+        for _ in range(repetition):
+            tl1s.vport_send_undersize_packets(traffic_item_name="TI", undersize=True, desired_frame_size=60)
+            time.sleep(wait_interval)
+            tl1s.vport_send_undersize_packets(traffic_item_name="TI", undersize=False, desired_frame_size=60)
+    
+    def generate_runt_traffic(wait_interval, repetition):
+        for _ in range(repetition):
+            tl1s.vport_send_undersize_packets(traffic_item_name="TI", runt=True, desired_frame_size=45)
+            time.sleep(wait_interval)
+            tl1s.vport_send_undersize_packets(traffic_item_name="TI", runt=False, desired_frame_size=45)
+            
+    
+    def vport_increment_decrement_frequency(vports, wait_interval, repetition):
+        for _ in range(repetition):
+            tl1s.vport_increment_decrement_frequency(vports=vports, operation="increment", step_size=70)
+            time.sleep(wait_interval)
+            tl1s.vport_increment_decrement_frequency(vports=vports, operation="decrement", step_size=60)
+        
+        
+    
+        
      
- 
+    link_up_down(vports=["PORT_1"], wait_interval=5, repetition=2)
+    laser_on_off(vports=["PORT_1"], wait_interval=5, repetition=2)
+    generate_faults(vports=["PORT_1"], wait_interval=5, repetition=2)
+    vport_clock_source_faults_toggle(vports=["PORT_1"], wait_interval=5, repetition=2)
+    vport_increment_decrement_frequency(vports=["PORT_1"], wait_interval=5, repetition=2)
+    generate_undersize_packets_traffic(wait_interval=5, repetition=2)
+    generate_runt_traffic(wait_interval=5, repetition=2)
+    generate_crc_error_traffic(wait_interval=5, repetition=2)
+    
+    
+    
