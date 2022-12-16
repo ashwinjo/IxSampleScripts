@@ -165,13 +165,18 @@ class TestL1Settings(object):
                 configElement.Crc = 'badCrc'
                 
                 print(configElement)
+    
+    def reboot(self):
+        vport = self.ixnetwork.Vport.find(Name="Port_1")
+        vport.ResetPortCpu(async_operation=True)
+                
 
 
 if __name__ == "__main__":
     tl1s = TestL1Settings(ipaddr='10.36.236.121', user='admin',
                           password='Kimchi123Kimchi123!', session_id='12', 
                           clear_config=False)
-    
+
        
     def link_up_down(vports, wait_interval, repetition):
         
@@ -230,14 +235,16 @@ if __name__ == "__main__":
     
         
      
-    link_up_down(vports=["PORT_1"], wait_interval=5, repetition=2)
-    laser_on_off(vports=["PORT_1"], wait_interval=5, repetition=2)
-    generate_faults(vports=["PORT_1"], wait_interval=5, repetition=2)
-    vport_clock_source_faults_toggle(vports=["PORT_1"], wait_interval=5, repetition=2)
-    vport_increment_decrement_frequency(vports=["PORT_1"], wait_interval=5, repetition=2)
+    link_up_down(vports=["Port_1"], wait_interval=5, repetition=2)
+    laser_on_off(vports=["Port_1"], wait_interval=5, repetition=2)
+    generate_faults(vports=["Port_1"], wait_interval=5, repetition=2)
+    vport_clock_source_faults_toggle(vports=["Port_1"], wait_interval=5, repetition=2)
+    vport_increment_decrement_frequency(vports=["Port_1"], wait_interval=5, repetition=2)
+    
     generate_undersize_packets_traffic(wait_interval=5, repetition=2)
     generate_runt_traffic(wait_interval=5, repetition=2)
     generate_crc_error_traffic(wait_interval=5, repetition=2)
+    
     
     
     
