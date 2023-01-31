@@ -1,0 +1,1418 @@
+
+15:44:21.994338: 
+	POST: http://34.237.46.162:8080/api/v0/sessions
+	DATA: {"ixLoadVersion": "9.20.0.279"}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 201
+
+15:44:22.410522: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/operations/start
+	DATA: {}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 202
+
+
+
+
+15:44:22.607760: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 0/120 seconds
+
+15:44:23.805324: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 1/120 seconds
+
+15:44:25.023094: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 2/120 seconds
+
+15:44:26.223972: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 3/120 seconds
+
+15:44:27.496595: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 4/120 seconds
+
+15:44:28.751567: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 5/120 seconds
+
+15:44:30.000187: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 6/120 seconds
+
+15:44:31.235063: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 7/120 seconds
+
+15:44:32.438520: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 8/120 seconds
+
+15:44:33.633867: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 9/120 seconds
+
+15:44:34.867124: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 10/120 seconds
+
+15:44:36.067995: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 11/120 seconds
+
+15:44:37.273522: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 12/120 seconds
+
+15:44:38.471763: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 13/120 seconds
+
+15:44:39.667614: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 14/120 seconds
+
+15:44:40.994172: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 15/120 seconds
+
+15:44:42.250075: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 16/120 seconds
+
+15:44:43.477320: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 17/120 seconds
+
+15:44:44.783776: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 18/120 seconds
+
+15:44:45.983820: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 19/120 seconds
+
+15:44:47.175285: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 20/120 seconds
+
+15:44:48.368429: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 21/120 seconds
+
+15:44:49.572680: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 22/120 seconds
+
+15:44:50.783707: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 23/120 seconds
+
+15:44:51.986339: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 24/120 seconds
+
+15:44:53.188852: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 25/120 seconds
+
+15:44:54.390257: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 26/120 seconds
+
+15:44:55.621119: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 27/120 seconds
+
+15:44:56.883326: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 28/120 seconds
+
+15:44:58.084215: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 29/120 seconds
+
+15:44:59.283301: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 30/120 seconds
+
+15:45:00.490725: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 31/120 seconds
+
+15:45:01.692328: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 32/120 seconds
+
+15:45:02.979626: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 33/120 seconds
+
+15:45:04.218361: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 34/120 seconds
+
+15:45:05.436470: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 35/120 seconds
+
+15:45:06.690807: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 36/120 seconds
+
+15:45:07.893517: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 37/120 seconds
+
+15:45:09.151626: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: False
+	Wait 38/120 seconds
+
+15:45:10.354185: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	CurrentStatus: True
+
+15:45:10.561158: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/loadTest/
+	DATA: {"fullPath": "myHttp.rxf"}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 202
+
+15:45:10.824440: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/loadTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 0/120 seconds...
+
+15:45:12.255557: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/loadTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 1/120 seconds...
+
+15:45:16.398511: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/loadTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 2/120 seconds...
+
+15:45:20.211418: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/loadTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 3/120 seconds...
+
+15:45:21.426404: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/loadTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 4/120 seconds...
+
+15:45:38.029720: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/loadTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:38.269969: 
+	PATCH: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/activeTest
+	DATA: {'enableForceOwnership': True, 'enableResetPorts': True}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 204
+
+15:45:38.501609: addNewChassis: ['ec2-18-214-142-227.compute-1.amazonaws.com']
+
+15:45:38.501872: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:38.729351: addNewChassis: Chassis IP does not exists
+
+15:45:38.730036: addNewChassis: Adding new chassisIP: ec2-18-214-142-227.compute-1.amazonaws.com:
+URL: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList
+
+15:45:38.730256: addNewChassis: Server synchronous blocking state. Please wait a few seconds ...
+
+15:45:38.730504: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList
+	DATA: {"name": "ec2-18-214-142-227.compute-1.amazonaws.com"}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 201
+
+15:45:39.019334: 
+AddNewChassis: locationUrl: /api/v0/sessions/3/ixLoad/chassisChain/chassisList/0
+
+15:45:39.019614: 
+Added new chassisIp Object to chainList: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0
+
+15:45:39.019835: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:39.260423: 
+addNewChassis: New Chassis ID: 1
+
+15:45:39.260965: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0/operations/refreshConnection
+	DATA: {}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 202
+
+15:45:39.473430: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0/operations/refreshConnection/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 0/120 seconds...
+
+15:45:40.698560: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0/operations/refreshConnection/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:40.945739: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:41.158289: waitForChassisIpToConnect response: {'chassisIp': '10.0.10.11', 'name': 'ec2-18-214-142-227.compute-1.amazonaws.com', 'links': [{'href': '/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0/cardList', 'rel': 'cardList'}, {'href': '/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0/docs', 'rel': 'docs'}], 'isConnected': True, 'version': 1.0, 'ixOsVersion': 'IxOS 9.20.2700.12 ', 'chassisType': 'Ixia Virtual Test Appliance', 'restObjectType': 'ixChassis', 'id': 1, 'isDisconnected': False}
+waitForChassisIpToConnect: Status: True
+Chassis is connected
+assignChassisAndPorts: To new chassis: /api/v0/sessions/3/ixLoad/chassisChain/chassisList/0
+
+15:45:41.160400: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/activeTest/communityList/
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:41.421060: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0/operations/refreshConnection
+	DATA: {}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 202
+
+15:45:41.656653: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0/operations/refreshConnection/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:41.864566: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:42.096691: waitForChassisIpToConnect response: {'chassisIp': '10.0.10.11', 'name': 'ec2-18-214-142-227.compute-1.amazonaws.com', 'links': [{'href': '/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0/cardList', 'rel': 'cardList'}, {'href': '/api/v0/sessions/3/ixLoad/chassisChain/chassisList/0/docs', 'rel': 'docs'}], 'isConnected': True, 'version': 1.0, 'ixOsVersion': 'IxOS 9.20.2700.12 ', 'chassisType': 'Ixia Virtual Test Appliance', 'restObjectType': 'ixChassis', 'id': 1, 'isDisconnected': False}
+waitForChassisIpToConnect: Status: True
+Chassis is connected
+assignChassisAndPorts URL: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/activeTest/communityList/0/network/portList
+assignChassisAndPorts Params: {"chassisId": 1, "cardId": 1, "portId": 1}
+
+15:45:42.097795: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/activeTest/communityList/0/network/portList
+	DATA: {"chassisId": 1, "cardId": 1, "portId": 1}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 201
+
+15:45:42.414813: addNewChassis: ['ec2-35-175-29-93.compute-1.amazonaws.com']
+
+15:45:42.415721: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:42.627082: addNewChassis: Chassis IP does not exists
+
+15:45:42.627564: addNewChassis: Adding new chassisIP: ec2-35-175-29-93.compute-1.amazonaws.com:
+URL: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList
+
+15:45:42.627710: addNewChassis: Server synchronous blocking state. Please wait a few seconds ...
+
+15:45:42.627868: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList
+	DATA: {"name": "ec2-35-175-29-93.compute-1.amazonaws.com"}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 201
+
+15:45:42.842809: 
+AddNewChassis: locationUrl: /api/v0/sessions/3/ixLoad/chassisChain/chassisList/1
+
+15:45:42.843125: 
+Added new chassisIp Object to chainList: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1
+
+15:45:42.843327: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:43.064431: 
+addNewChassis: New Chassis ID: 2
+
+15:45:43.064657: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1/operations/refreshConnection
+	DATA: {}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 202
+
+15:45:43.278797: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1/operations/refreshConnection/2
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 0/120 seconds...
+
+15:45:44.500256: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1/operations/refreshConnection/2
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:44.766011: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:44.979951: waitForChassisIpToConnect response: {'chassisIp': '10.0.10.12', 'name': 'ec2-35-175-29-93.compute-1.amazonaws.com', 'links': [{'href': '/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1/cardList', 'rel': 'cardList'}, {'href': '/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1/docs', 'rel': 'docs'}], 'isConnected': True, 'version': 1.0, 'ixOsVersion': 'IxOS 9.20.2700.12 ', 'chassisType': 'Ixia Virtual Test Appliance', 'restObjectType': 'ixChassis', 'id': 2, 'isDisconnected': False}
+waitForChassisIpToConnect: Status: True
+Chassis is connected
+assignChassisAndPorts: To new chassis: /api/v0/sessions/3/ixLoad/chassisChain/chassisList/1
+
+15:45:44.980743: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/activeTest/communityList/
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:45.250829: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1/operations/refreshConnection
+	DATA: {}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 202
+
+15:45:45.489586: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1/operations/refreshConnection/3
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:45.711780: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:45.977258: waitForChassisIpToConnect response: {'chassisIp': '10.0.10.12', 'name': 'ec2-35-175-29-93.compute-1.amazonaws.com', 'links': [{'href': '/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1/cardList', 'rel': 'cardList'}, {'href': '/api/v0/sessions/3/ixLoad/chassisChain/chassisList/1/docs', 'rel': 'docs'}], 'isConnected': True, 'version': 1.0, 'ixOsVersion': 'IxOS 9.20.2700.12 ', 'chassisType': 'Ixia Virtual Test Appliance', 'restObjectType': 'ixChassis', 'id': 2, 'isDisconnected': False}
+waitForChassisIpToConnect: Status: True
+Chassis is connected
+assignChassisAndPorts URL: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/activeTest/communityList/1/network/portList
+assignChassisAndPorts Params: {"chassisId": 2, "cardId": 1, "portId": 1}
+
+15:45:45.981621: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/activeTest/communityList/1/network/portList
+	DATA: {"chassisId": 2, "cardId": 1, "portId": 1}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 201
+
+15:45:46.234240: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:45:46.452039: 
+	PATCH: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList/0/network/portList
+	DATA: {'enableCapture': 'true'}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 204
+
+15:45:46.702055: 
+	PATCH: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList/1/network/portList
+	DATA: {'enableCapture': 'true'}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 204
+
+15:45:46.920368: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest
+	DATA: {}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 202
+
+15:45:47.150422: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 0/300 seconds...
+
+15:45:48.382970: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 1/300 seconds...
+
+15:45:49.604533: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 2/300 seconds...
+
+15:45:50.866028: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 3/300 seconds...
+
+15:45:52.089932: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 4/300 seconds...
+
+15:45:53.311737: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 5/300 seconds...
+
+15:45:54.533858: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 6/300 seconds...
+
+15:45:55.755807: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 7/300 seconds...
+
+15:45:57.000494: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 8/300 seconds...
+
+15:45:58.223872: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 9/300 seconds...
+
+15:45:59.442514: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 10/300 seconds...
+
+15:46:00.723913: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 11/300 seconds...
+
+15:46:01.979870: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 12/300 seconds...
+
+15:46:03.201163: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 13/300 seconds...
+
+15:46:04.441645: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 14/300 seconds...
+
+15:46:05.727830: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 15/300 seconds...
+
+15:46:07.012398: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 16/300 seconds...
+
+15:46:08.279409: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 17/300 seconds...
+
+15:46:09.500755: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 18/300 seconds...
+
+15:46:10.733247: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 19/300 seconds...
+
+15:46:11.955501: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 20/300 seconds...
+
+15:46:13.155963: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 21/300 seconds...
+
+15:46:14.378517: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 22/300 seconds...
+
+15:46:15.598893: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 23/300 seconds...
+
+15:46:16.832952: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 24/300 seconds...
+
+15:46:18.063122: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 25/300 seconds...
+
+15:46:19.286595: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 26/300 seconds...
+
+15:46:20.520737: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 27/300 seconds...
+
+15:46:21.738673: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 28/300 seconds...
+
+15:46:23.032647: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 29/300 seconds...
+
+15:46:24.254343: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 30/300 seconds...
+
+15:46:25.479283: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/0
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:46:25.967512: ActiveTest current status: Running. 
+
+HTTPClient:
+
+HTTPServer:
+
+15:46:34.697289: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 125994
+	HTTP Simulated Users: 10
+	HTTP Connections: 125927
+	HTTP Transactions: 125913
+	HTTP Connection Attempts: 125943
+
+HTTPServer:
+	TCP Connections Established: 126321
+	TCP Connection Requests Failed: 0
+
+15:46:37.953968: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 214996
+	HTTP Simulated Users: 10
+	HTTP Connections: 214583
+	HTTP Transactions: 214568
+	HTTP Connection Attempts: 214598
+
+HTTPServer:
+	TCP Connections Established: 304202
+	TCP Connection Requests Failed: 0
+
+15:46:41.262269: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 399182
+	HTTP Simulated Users: 10
+	HTTP Connections: 398924
+	HTTP Transactions: 398908
+	HTTP Connection Attempts: 398937
+
+HTTPServer:
+	TCP Connections Established: 399485
+	TCP Connection Requests Failed: 0
+
+15:46:44.671100: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 590585
+	HTTP Simulated Users: 10
+	HTTP Connections: 590133
+	HTTP Transactions: 590114
+	HTTP Connection Attempts: 590144
+
+HTTPServer:
+	TCP Connections Established: 590394
+	TCP Connection Requests Failed: 0
+
+15:46:48.222232: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 781471
+	HTTP Simulated Users: 10
+	HTTP Connections: 780855
+	HTTP Transactions: 780840
+	HTTP Connection Attempts: 780870
+
+HTTPServer:
+	TCP Connections Established: 781271
+	TCP Connection Requests Failed: 0
+
+15:46:51.962351: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 876360
+	HTTP Simulated Users: 10
+	HTTP Connections: 876242
+	HTTP Transactions: 876226
+	HTTP Connection Attempts: 876255
+
+HTTPServer:
+	TCP Connections Established: 972666
+	TCP Connection Requests Failed: 0
+
+15:46:56.119949: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1146204
+	HTTP Simulated Users: 8
+	HTTP Connections: 1140022
+	HTTP Transactions: 1140015
+	HTTP Connection Attempts: 1140030
+
+HTTPServer:
+	TCP Connections Established: 1155882
+	TCP Connection Requests Failed: 0
+
+15:47:00.539977: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1163718
+	HTTP Simulated Users: 0
+	HTTP Connections: 1163718
+	HTTP Transactions: 1163718
+	HTTP Connection Attempts: 1163718
+
+HTTPServer:
+	TCP Connections Established: 1163718
+	TCP Connection Requests Failed: 0
+
+15:47:04.592003: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1163718
+	HTTP Simulated Users: 0
+	HTTP Connections: 1163718
+	HTTP Transactions: 1163718
+	HTTP Connection Attempts: 1163718
+
+HTTPServer:
+	TCP Connections Established: 1163718
+	TCP Connection Requests Failed: 0
+
+15:47:09.185029: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1163718
+	HTTP Simulated Users: 0
+	HTTP Connections: 1163718
+	HTTP Transactions: 1163718
+	HTTP Connection Attempts: 1163718
+
+HTTPServer:
+	TCP Connections Established: 1163718
+	TCP Connection Requests Failed: 0
+
+15:47:13.879979: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1163718
+	HTTP Simulated Users: 0
+	HTTP Connections: 1163718
+	HTTP Transactions: 1163718
+	HTTP Connection Attempts: 1163718
+
+HTTPServer:
+	TCP Connections Established: 1163718
+	TCP Connection Requests Failed: 0
+
+15:47:19.432362: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1163718
+	HTTP Simulated Users: 0
+	HTTP Connections: 1163718
+	HTTP Transactions: 1163718
+	HTTP Connection Attempts: 1163718
+
+HTTPServer:
+	TCP Connections Established: 1163718
+	TCP Connection Requests Failed: 0
+
+15:47:24.331695: ActiveTest current status: Stopping Run. 
+	Waiting 1/120 seconds
+
+15:47:25.583016: ActiveTest current status: Stopping Run. 
+	Waiting 2/120 seconds
+
+15:47:26.873722: ActiveTest current status: Stopping Run. 
+	Waiting 3/120 seconds
+
+15:47:28.186543: ActiveTest current status: Stopping Run. 
+	Waiting 4/120 seconds
+
+15:47:29.456838: ActiveTest current status: Cleaning. 
+	Waiting 5/120 seconds
+
+15:47:30.732101: ActiveTest current status: Cleaning. 
+	Waiting 6/120 seconds
+
+15:47:32.021267: ActiveTest current status: Cleaning. 
+	Waiting 7/120 seconds
+
+15:47:33.332324: ActiveTest current status: Cleaning. 
+	Waiting 8/120 seconds
+
+15:47:34.596400: ActiveTest current status: Cleaning. 
+	Waiting 9/120 seconds
+
+15:47:35.895620: ActiveTest current status: Cleaning. 
+	Waiting 10/120 seconds
+
+15:47:37.178654: ActiveTest current status: Cleaning. 
+	Waiting 11/120 seconds
+
+15:47:38.445702: ActiveTest current status: Cleaning. 
+	Waiting 12/120 seconds
+
+15:47:39.726008: ActiveTest current status: Cleaning. 
+	Waiting 13/120 seconds
+
+15:47:40.997696: ActiveTest current status: Cleaning. 
+	Waiting 14/120 seconds
+
+15:47:42.290674: ActiveTest current status: Unconfigured. 
+
+15:47:42.291786: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/activeTest
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:47:42.530753: waitForActiveTestToUnconfigure current state:Unconfigured
+15:47:42.531037: 
+ActiveTest is Unconfigured
+
+15:47:42.531433: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:47:42.749759: downloadResults: Saving results from C:\\ProgramData\\Ixia\\IxLoad\\9.20.0.279\\Results\\myHttp_20230127_234616 to: C:\/ixLoadResults_myHttp_20230127_234616.zip
+
+15:47:42.750328: 
+	GET: http://34.237.46.162:8080/api/v1/downloadResource?localPath=C:\\ProgramData\\Ixia\\IxLoad\\9.20.0.279\\Results\\myHttp_20230127_234616&zipName=zipFileName
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:50:57.134018: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:50:57.364755: 
+	PATCH: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList/0/network/portList
+	DATA: {'enableCapture': 'true'}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 204
+
+15:50:57.599593: 
+	PATCH: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList/1/network/portList
+	DATA: {'enableCapture': 'true'}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 204
+
+15:50:57.907357: 
+	POST: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest
+	DATA: {}
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 202
+
+15:50:58.116694: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 0/300 seconds...
+
+15:50:59.348119: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 1/300 seconds...
+
+15:51:00.566784: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 2/300 seconds...
+
+15:51:01.784769: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 3/300 seconds...
+
+15:51:03.009754: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 4/300 seconds...
+
+15:51:04.227565: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 5/300 seconds...
+
+15:51:05.470346: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 6/300 seconds...
+
+15:51:06.677864: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 7/300 seconds...
+
+15:51:07.895365: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 8/300 seconds...
+
+15:51:09.114270: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 9/300 seconds...
+
+15:51:10.344943: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 10/300 seconds...
+
+15:51:11.559244: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 11/300 seconds...
+
+15:51:12.775573: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 12/300 seconds...
+
+15:51:13.978021: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 13/300 seconds...
+
+15:51:15.196654: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 14/300 seconds...
+
+15:51:16.400968: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 15/300 seconds...
+
+15:51:17.615656: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 16/300 seconds...
+
+15:51:18.839423: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 17/300 seconds...
+
+15:51:20.081881: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 18/300 seconds...
+
+15:51:21.380684: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 19/300 seconds...
+
+15:51:22.596783: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 20/300 seconds...
+
+15:51:23.864688: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 21/300 seconds...
+
+15:51:25.115476: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 22/300 seconds...
+
+15:51:26.379154: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 23/300 seconds...
+
+15:51:27.641002: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 24/300 seconds...
+
+15:51:28.900640: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 25/300 seconds...
+
+15:51:30.169532: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 26/300 seconds...
+
+15:51:31.502201: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 27/300 seconds...
+
+15:51:32.726594: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 28/300 seconds...
+
+15:51:33.959733: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+	Current status: In Progress. Wait 29/300 seconds...
+
+15:51:35.184914: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/operations/runTest/1
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:51:35.682124: ActiveTest current status: Running. 
+
+HTTPClient:
+
+HTTPServer:
+
+15:51:44.458725: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 137440
+	HTTP Simulated Users: 10
+	HTTP Connections: 125993
+	HTTP Transactions: 125979
+	HTTP Connection Attempts: 126008
+
+HTTPServer:
+	TCP Connections Established: 138055
+	TCP Connection Requests Failed: 0
+
+15:51:47.724630: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 314684
+	HTTP Simulated Users: 10
+	HTTP Connections: 303802
+	HTTP Transactions: 303785
+	HTTP Connection Attempts: 303815
+
+HTTPServer:
+	TCP Connections Established: 315181
+	TCP Connection Requests Failed: 0
+
+15:51:51.213772: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 408677
+	HTTP Simulated Users: 10
+	HTTP Connections: 396440
+	HTTP Transactions: 396425
+	HTTP Connection Attempts: 396455
+
+HTTPServer:
+	TCP Connections Established: 505187
+	TCP Connection Requests Failed: 0
+
+15:51:54.633795: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 601489
+	HTTP Simulated Users: 10
+	HTTP Connections: 588605
+	HTTP Transactions: 588593
+	HTTP Connection Attempts: 588623
+
+HTTPServer:
+	TCP Connections Established: 601437
+	TCP Connection Requests Failed: 0
+
+15:51:58.105880: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 792018
+	HTTP Simulated Users: 10
+	HTTP Connections: 778936
+	HTTP Transactions: 778921
+	HTTP Connection Attempts: 778950
+
+HTTPServer:
+	TCP Connections Established: 792090
+	TCP Connection Requests Failed: 0
+
+15:52:02.469533: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 983212
+	HTTP Simulated Users: 10
+	HTTP Connections: 970203
+	HTTP Transactions: 970186
+	HTTP Connection Attempts: 970214
+
+HTTPServer:
+	TCP Connections Established: 983377
+	TCP Connection Requests Failed: 0
+
+15:52:06.239103: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1152869
+	HTTP Simulated Users: 7
+	HTTP Connections: 1137363
+	HTTP Transactions: 1137360
+	HTTP Connection Attempts: 1137373
+
+HTTPServer:
+	TCP Connections Established: 1160669
+	TCP Connection Requests Failed: 0
+
+15:52:10.631207: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1160669
+	HTTP Simulated Users: 0
+	HTTP Connections: 1160669
+	HTTP Transactions: 1160669
+	HTTP Connection Attempts: 1160669
+
+HTTPServer:
+	TCP Connections Established: 1160669
+	TCP Connection Requests Failed: 0
+
+15:52:14.711544: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1160669
+	HTTP Simulated Users: 0
+	HTTP Connections: 1160669
+	HTTP Transactions: 1160669
+	HTTP Connection Attempts: 1160669
+
+HTTPServer:
+	TCP Connections Established: 1160669
+	TCP Connection Requests Failed: 0
+
+15:52:19.690988: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1160669
+	HTTP Simulated Users: 0
+	HTTP Connections: 1160669
+	HTTP Transactions: 1160669
+	HTTP Connection Attempts: 1160669
+
+HTTPServer:
+	TCP Connections Established: 1160669
+	TCP Connection Requests Failed: 0
+
+15:52:24.517408: ActiveTest current status: Running. 
+
+HTTPClient:
+	TCP Connections Established: 1160669
+	HTTP Simulated Users: 0
+	HTTP Connections: 1160669
+	HTTP Transactions: 1160669
+	HTTP Connection Attempts: 1160669
+
+HTTPServer:
+	TCP Connections Established: 1160669
+	TCP Connection Requests Failed: 0
+
+15:52:30.109007: ActiveTest current status: Stopping Run. 
+	Waiting 1/120 seconds
+
+15:52:31.401575: ActiveTest current status: Stopping Run. 
+	Waiting 2/120 seconds
+
+15:52:32.751143: ActiveTest current status: Stopping Run. 
+	Waiting 3/120 seconds
+
+15:52:34.061117: ActiveTest current status: Stopping Run. 
+	Waiting 4/120 seconds
+
+15:52:35.351545: ActiveTest current status: Stopping Run. 
+	Waiting 5/120 seconds
+
+15:52:36.681744: ActiveTest current status: Stopping Run. 
+	Waiting 6/120 seconds
+
+15:52:37.964955: ActiveTest current status: Stopping Run. 
+	Waiting 7/120 seconds
+
+15:52:39.259105: ActiveTest current status: Cleaning. 
+	Waiting 8/120 seconds
+
+15:52:40.524960: ActiveTest current status: Cleaning. 
+	Waiting 9/120 seconds
+
+15:52:41.795931: ActiveTest current status: Cleaning. 
+	Waiting 10/120 seconds
+
+15:52:43.063660: ActiveTest current status: Cleaning. 
+	Waiting 11/120 seconds
+
+15:52:44.327456: ActiveTest current status: Cleaning. 
+	Waiting 12/120 seconds
+
+15:52:45.605006: ActiveTest current status: Cleaning. 
+	Waiting 13/120 seconds
+
+15:52:46.862235: ActiveTest current status: Cleaning. 
+	Waiting 14/120 seconds
+
+15:52:48.119632: ActiveTest current status: Cleaning. 
+	Waiting 15/120 seconds
+
+15:52:49.384244: ActiveTest current status: Cleaning. 
+	Waiting 16/120 seconds
+
+15:52:50.705540: ActiveTest current status: Cleaning. 
+	Waiting 17/120 seconds
+
+15:52:51.974798: ActiveTest current status: Unconfigured. 
+
+15:52:51.976314: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixLoad/test/activeTest
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:52:52.299177: waitForActiveTestToUnconfigure current state:Unconfigured
+15:52:52.299340: 
+ActiveTest is Unconfigured
+
+15:52:52.299785: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:52:52.531499: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList/0/network/portList
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:52:52.804872: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList/0/network/portList/0/restCaptureFile
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:52:53.767443: retrievePortCaptureFileForAssignedPorts: Saved as: /Users/ashwjosh/Untitled Folder/Capture_0_1.1.1.cap
+
+15:59:41.183515: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList/1/network/portList
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:59:41.426500: 
+	GET: http://34.237.46.162:8080/api/v0/sessions/3/ixload/test/activeTest/communityList/1/network/portList/1/restCaptureFile
+	HEADERS: {'content-type': 'application/json', 'X-Api-Key': 'ad1aba52f74546c1840bc61fedc4e87b'}
+	STATUS CODE: 200
+
+15:59:42.348475: retrievePortCaptureFileForAssignedPorts: Saved as: /Users/ashwjosh/Untitled Folder/Capture_1_2.1.1.cap
