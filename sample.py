@@ -6,7 +6,7 @@ traffic_item_name = "Topo1 to Topo2"
 
 class TestL1Settings(object):
 
-    def __init__(self, ipaddr, user, password, session_name=None, session_id=None):
+    def __init__(self, ipaddr, user, password, session_name=None):
         """Constructor for TestCase CLasses
         Args:
             ipaddr (_type_): ip of ixia chasses
@@ -21,9 +21,7 @@ class TestL1Settings(object):
         # Multiple sessions possible only with Linux Chassis
         if not session_name:
             session_assistant = testPlatform.Sessions.find()
-        elif session_id:
-            session_assistant = testPlatform.Sessions.find(Id=session_id)
-        elif session_name:
+        else:
             session_assistant = testPlatform.Sessions.find(Name=session_name)
         self.ixnetwork = session_assistant.Ixnetwork
     
@@ -170,10 +168,16 @@ class TestL1Settings(object):
 
 if __name__ == "__main__":
     
-    # No need to pass session_name when testing on Windows Ixia Chassis
-    tl1s = TestL1Settings(ipaddr='ixiaapiserverip', user='admin',
-                          password='somepassword!', session_name="testbed_ashwjosh")
-
+    # No need to pass session_name when testing on Windows API Server. Just pass user and password. By default session=1 will be picked
+    tl1s = TestL1Settings(ipaddr='10.36.236.121', user='username',
+                          password='password')
+    
+    """
+    When connecting to Linux API Server
+    tl1s = TestL1Settings(ipaddr='10.36.236.121', user='username',
+                          password='password', 
+                          session_name="session_name")
+    """
        
     def link_up_down(vports, wait_interval, repetition):
         
