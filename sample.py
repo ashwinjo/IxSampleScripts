@@ -22,7 +22,7 @@ class TestL1Settings(object):
         if not session_name:
             session_assistant = testPlatform.Sessions.find()
         elif session_id:
-            session_assistant = testPlatform.Sessions.find(Id=session_name)
+            session_assistant = testPlatform.Sessions.find(Id=session_id)
         elif session_name:
             session_assistant = testPlatform.Sessions.find(Name=session_name)
         self.ixnetwork = session_assistant.Ixnetwork
