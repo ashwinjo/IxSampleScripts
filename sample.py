@@ -2,11 +2,12 @@ from ixnetwork_restpy.testplatform.testplatform import TestPlatform # ixnetwork_
 import time
 from typing import List
 
+traffic_item_name = "Topo1 to Topo2"
+
 class TestL1Settings(object):
 
-    def __init__(self, ipaddr, user, password, session_name=None):
+    def __init__(self, ipaddr, user, password, session_name=None, session_id=None):
         """Constructor for TestCase CLasses
-
         Args:
             ipaddr (_type_): ip of ixia chasses
             user (_type_): username for ixia chassis
@@ -20,14 +21,15 @@ class TestL1Settings(object):
         # Multiple sessions possible only with Linux Chassis
         if not session_name:
             session_assistant = testPlatform.Sessions.find()
-        else:
+        elif session_id:
+            session_assistant = testPlatform.Sessions.find(Id=session_name)
+        elif session_name:
             session_assistant = testPlatform.Sessions.find(Name=session_name)
         self.ixnetwork = session_assistant.Ixnetwork
     
 
     def vport_link_up_down(self, **kwargs):
         """Turn L1 Ports UP/Down
-
         Returns:
             _type_: _description_
         """
@@ -43,7 +45,6 @@ class TestL1Settings(object):
 
     def vport_laser_on_off(self, **kwargs):
         """Turn Laser On Off
-
         Returns:ß
             _type_: _description_
         """
@@ -86,7 +87,6 @@ class TestL1Settings(object):
 
     def vport_increment_decrement_frequency(self, vports: List, operation: str, step_size: int):
         """Increment Decrement Transmit deviation
-
         Args:
             vports (List): Ports to apply changes on
             operation (str): increment/decrement frequency
@@ -169,8 +169,10 @@ class TestL1Settings(object):
 
 
 if __name__ == "__main__":
-    tl1s = TestL1Settings(ipaddr='10.36.236.121', user='admin',
-                          password='Kimchi123Kimchi123!', session_name="IxNetwork Test 12")
+    
+    # No need to pass session_name when testing on Windows Ixia Chassis
+    tl1s = TestL1Settings(ipaddr='ixiaapiserverip', user='admin',
+                          password='somepassword!', session_name="testbed_ashwjosh")
 
        
     def link_up_down(vports, wait_interval, repetition):
@@ -201,23 +203,23 @@ if __name__ == "__main__":
             time.sleep(wait_interval)
             tl1s.vport_insert_local_fault(vports=vports, source_value='localFault',dest_value='remoteFault',send_sets_mode="typeBOnly")
         
-    def generate_crc_error_traffic(wait_interval, repetition):
+    def generate_crc_error_traffic(traffic_item_name, wait_interval, repetition):
         for _ in range(repetition):
-            tl1s.vport_send_undersize_packets(traffic_item_name="TI", crc=True, desired_frame_size=128)
+            tl1s.vport_send_undersize_packets(traffic_item_name=traffic_item_name, crc=True, desired_frame_size=128)
             time.sleep(wait_interval)
-            tl1s.vport_send_undersize_packets(traffic_item_name="TI", crc=False, desired_frame_size=128)
+            tl1s.vport_send_undersize_packets(traffic_item_name=traffic_item_name, crc=False, desired_frame_size=128)
     
-    def generate_undersize_packets_traffic(wait_interval, repetition):
+    def generate_undersize_packets_traffic(traffic_item_name, wait_interval, repetition):
         for _ in range(repetition):
-            tl1s.vport_send_undersize_packets(traffic_item_name="TI", undersize=True, desired_frame_size=60)
+            tl1s.vport_send_undersize_packets(traffic_item_name=traffic_item_name, undersize=True, desired_frame_size=60)
             time.sleep(wait_interval)
-            tl1s.vport_send_undersize_packets(traffic_item_name="TI", undersize=False, desired_frame_size=60)
+            tl1s.vport_send_undersize_packets(traffic_item_name=traffic_item_name, undersize=False, desired_frame_size=60)
     
-    def generate_runt_traffic(wait_interval, repetition):
+    def generate_runt_traffic(traffic_item_name, wait_interval, repetition):
         for _ in range(repetition):
-            tl1s.vport_send_undersize_packets(traffic_item_name="TI", runt=True, desired_frame_size=45)
+            tl1s.vport_send_undersize_packets(traffic_item_name=traffic_item_name, runt=True, desired_frame_size=45)
             time.sleep(wait_interval)
-            tl1s.vport_send_undersize_packets(traffic_item_name="TI", runt=False, desired_frame_size=45)
+            tl1s.vport_send_undersize_packets(traffic_item_name=traffic_item_name, runt=False, desired_frame_size=45)
             
     
     def vport_increment_decrement_frequency(vports, wait_interval, repetition):
@@ -243,15 +245,17 @@ if __name__ == "__main__":
     
     print("==Increment Decrement Transmit Deviation by PPM values==")
     vport_increment_decrement_frequency(vports=["Port_1"], wait_interval=5, repetition=2)
+
+
     
     print("==Generating undersize packets==")
-    generate_undersize_packets_traffic(wait_interval=5, repetition=2)
+    generate_undersize_packets_traffic(traffic_item_name, wait_interval=5, repetition=2)
     
     print("==Generating RUNT packets==")
-    generate_runt_traffic(wait_interval=5, repetition=2)
+    generate_runt_traffic(traffic_item_name,wait_interval=5, repetition=2)
     
     print("==Generating packets with CRC errors=")
-    generate_crc_error_traffic(wait_interval=5, repetition=2)
+    generate_crc_error_traffic(traffic_item_name, wait_interval=5, repetition=2)
     
     
     """Sample Output:
@@ -259,22 +263,14 @@ if __name__ == "__main__":
         (ixn-venv) ashwjosh@C0HD4NKHCX IxSampleScripts % python sample.py  
         ==Link Up Down==
         Port_1 turned down
-
         Port_1 turned up
-
         Port_1 turned down
-
         Port_1 turned up
-
         ==Laser On Off==
         Port_1 turned down
-
         Port_1 turned up
-
         Port_1 turned down
-
         Port_1 turned up
-
         ==Generating Faults==
         NovusHundredGigLan[0]: /api/v1/sessions/12/ixnetwork/vport/1/l1Config/novusHundredGigLan
                 AutoInstrumentation: endOfFrame
@@ -409,4 +405,3 @@ if __name__ == "__main__":
                 PreambleFrameSizeMode: auto
         (ixn-venv) ashwjosh@C0HD4NKHCX IxSampleScripts % 
         """
-    
