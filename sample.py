@@ -17,6 +17,13 @@ def get_linux_chassis_information(chassis_ip, username, password):
     while not resp.endswith('# '):
         resp = chan.recv(9999)
         resp = str(resp, 'UTF-8')
+    
+    print("\n******************* Chassis Welcome Screen ***********************\n")
+    chan.send('show welcome-screen\n')
+    resp  = ''
+    while not resp.endswith('# '):
+        resp = chan.recv(9999)
+        resp = str(resp, 'UTF-8')
         print(resp)
         
     print("\n******************* Chassis Info Fetch Date ***********************\n")
@@ -36,21 +43,6 @@ def get_linux_chassis_information(chassis_ip, username, password):
         resp = str(resp, 'UTF-8')
         print(resp)
         
-    print("\n******************* Chassis IxOS Version ***********************\n")
-    chan.send('show ixos active-version\n')
-    resp  = ''
-    while not resp.endswith('# '):
-        resp = chan.recv(9999)
-        resp = str(resp, 'UTF-8')
-        print(resp)
-        
-    print("\n******************* Chassis IxNetwork Version ***********************\n")
-    chan.send('show ixnprotocols active-version\n')
-    resp  = ''
-    while not resp.endswith('# '):
-        resp = chan.recv(9999)
-        resp = str(resp, 'UTF-8')
-        print(resp)
         
     print("\n******************* Chassis Topology ***********************\n")
     chan.send('show topology\n')
@@ -68,13 +60,21 @@ def get_linux_chassis_information(chassis_ip, username, password):
         resp = chan.recv(9999)
         resp = str(resp, 'UTF-8')
         print(resp)
+        
+    # print("\n******************* Collect Logs ***********************\n")
+    # chan.send('collect-logs\n')
+    # resp  = ''
+    # while not resp.endswith('# '):
+    #     resp = chan.recv(9999)
+    #     resp = str(resp, 'UTF-8')
+    #     print(resp)
 
     # Close the connection
     ssh.close()
     
 
 
-CHASSIS_LIST = [{"ip": "x.x.x.x, "username": "admin", "password": "xxxx!"}]
+CHASSIS_LIST = [{"ip": "X.X.X.X", "username": "xxx", "password": "xxx"}]
 
 if __name__ == "__main__":
     for chassis in CHASSIS_LIST:
