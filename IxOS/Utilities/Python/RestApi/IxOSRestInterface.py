@@ -34,7 +34,7 @@ class IxRestSession(object):
         poll_interval:  Polling inteval in seconds.
     """
 
-    def __init__(self, chassis_address, api_key=None,timeout=500, poll_interval=2, verbose=False, insecure_request_warning=False):
+    def __init__(self, chassis_address, username=None, password=None, api_key=None,timeout=500, poll_interval=2, verbose=False, insecure_request_warning=False):
 
         self.chassis_ip = chassis_address
         self.api_key = api_key
@@ -42,6 +42,8 @@ class IxRestSession(object):
         self.poll_interval = poll_interval
         self.verbose = verbose
         self._authUri = '/platform/api/v1/auth/session'
+        self.username = username
+        self.password = password
 
         # ignore self sign certificate warning(s) if insecure_request_warning=False
         if not insecure_request_warning:
@@ -55,7 +57,7 @@ class IxRestSession(object):
 
     # try to authenticate with default user/password if no api_key was provided
         if not api_key:
-            self.authenticate()
+            self.authenticate(username=self.username, password=self.password)
 
     def get_ixos_uri(self):
         return 'https://%s/chassis/api/v2/ixos' % self.chassis_ip
@@ -74,8 +76,8 @@ class IxRestSession(object):
         """
         print('getting api key ...')
         payload = {
-            'username': "admin",
-            'password': "Kimchi123Kimchi123!",
+            'username': username,
+            'password': password,
             'rememberMe': False
         }
         response = self.http_request(
@@ -85,7 +87,6 @@ class IxRestSession(object):
             payload=payload
         )
         self.api_key = response.data['apiKey']
-        print('api key is %s' % self.api_key)
 
     def http_request(self, method, uri, payload=None, params=None):
         """
@@ -97,27 +98,16 @@ class IxRestSession(object):
             if not uri.startswith('http'):
                 uri = self.get_ixos_uri() + uri
 
-            debug_string = 'Request => %s %s\n' % (method, uri)
-
             if payload is not None:
                 payload = json.dumps(payload, indent=2, sort_keys=True)
 
             headers = self.get_headers()
-
-            if self.verbose:
-                debug_string += 'Params:\n' + \
-                    json.dumps(params, indent=2, sort_keys=True) + '\n'
-                debug_string += 'Headers:\n' + \
-                    json.dumps(headers, indent=2, sort_keys=True) + '\n'
-                debug_string += 'Payload:\n' + str(payload) + '\n'
-
-            print(debug_string)
             response = requests.request(
                 method, uri, data=payload, params=params,
                 headers=headers, verify=False
             )
 
-            debug_string = 'Response => Status %d\n' % response.status_code
+            # debug_string = 'Response => Status %d\n' % response.status_code
             data = None
             try:
                 data = response.content.decode()
@@ -137,16 +127,6 @@ class IxRestSession(object):
                     ) if str(response.status_code) == '401' and uri[-len(self._authUri):] != self._authUri else ''
                 )
                 )
-
-            if self.verbose:
-                debug_string += 'Headers:\n' + \
-                    json.dumps(dict(response.headers),
-                               indent=2, sort_keys=True) + '\n'
-                if data:
-                    debug_string += 'Payload:\n' + \
-                        json.dumps(data, indent=2, sort_keys=True) + '\n'
-
-            print(debug_string)
 
             if response.status_code == 202:
                 return self.wait_for_async_operation(data)
