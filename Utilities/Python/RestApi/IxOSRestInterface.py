@@ -34,7 +34,7 @@ class IxRestSession(object):
         poll_interval:  Polling inteval in seconds.
     """
 
-    def __init__(self, chassis_address, api_key=None,timeout=500, poll_interval=2, verbose=False, insecure_request_warning=False):
+    def __init__(self, chassis_address, username=None, password=None, api_key=None,timeout=500, poll_interval=2, verbose=False, insecure_request_warning=False):
 
         self.chassis_ip = chassis_address
         self.api_key = api_key
@@ -42,6 +42,8 @@ class IxRestSession(object):
         self.poll_interval = poll_interval
         self.verbose = verbose
         self._authUri = '/platform/api/v1/auth/session'
+        self.username = username
+        self.password = password
 
         # ignore self sign certificate warning(s) if insecure_request_warning=False
         if not insecure_request_warning:
@@ -55,7 +57,7 @@ class IxRestSession(object):
 
     # try to authenticate with default user/password if no api_key was provided
         if not api_key:
-            self.authenticate()
+            self.authenticate(username=self.username, password=self.password)
 
     def get_ixos_uri(self):
         return 'https://%s/chassis/api/v2/ixos' % self.chassis_ip
@@ -85,7 +87,6 @@ class IxRestSession(object):
             payload=payload
         )
         self.api_key = response.data['apiKey']
-        print('api key is %s' % self.api_key)
 
     def http_request(self, method, uri, payload=None, params=None):
         """
@@ -97,27 +98,16 @@ class IxRestSession(object):
             if not uri.startswith('http'):
                 uri = self.get_ixos_uri() + uri
 
-            debug_string = 'Request => %s %s\n' % (method, uri)
-
             if payload is not None:
                 payload = json.dumps(payload, indent=2, sort_keys=True)
 
             headers = self.get_headers()
-
-            if self.verbose:
-                debug_string += 'Params:\n' + \
-                    json.dumps(params, indent=2, sort_keys=True) + '\n'
-                debug_string += 'Headers:\n' + \
-                    json.dumps(headers, indent=2, sort_keys=True) + '\n'
-                debug_string += 'Payload:\n' + str(payload) + '\n'
-
-            print(debug_string)
             response = requests.request(
                 method, uri, data=payload, params=params,
                 headers=headers, verify=False
             )
 
-            debug_string = 'Response => Status %d\n' % response.status_code
+            # debug_string = 'Response => Status %d\n' % response.status_code
             data = None
             try:
                 data = response.content.decode()
@@ -138,18 +128,10 @@ class IxRestSession(object):
                 )
                 )
 
-            if self.verbose:
-                debug_string += 'Headers:\n' + \
-                    json.dumps(dict(response.headers),
-                               indent=2, sort_keys=True) + '\n'
-                if data:
-                    debug_string += 'Payload:\n' + \
-                        json.dumps(data, indent=2, sort_keys=True) + '\n'
-
-            print(debug_string)
-
             if response.status_code == 202:
-                return self.wait_for_async_operation(data)
+                result_url = self.wait_for_async_operation(data)
+                print(result_url)
+                return result_url
             else:
                 response.data = data
                 return response
@@ -174,13 +156,15 @@ class IxRestSession(object):
 
                 time.sleep(self.poll_interval)
 
-            if operation_status == 'COMPLETED':
-                return response
+            if operation_status == 'SUCCESS':
+                return response.data['resultUrl']
             else:
+                print(operation_status)
                 raise IxRestException('async operation failed')
         except:
             raise
         finally:
+            print(operation_status)
             print('Completed async operation')
 
     def get_chassis(self, params=None):
@@ -194,6 +178,12 @@ class IxRestSession(object):
 
     def get_services(self, params=None):
         return self.http_request('GET', self.get_ixos_uri() + '/services', params=params)
+    
+    def get_perfcounters(self, params=None):
+        return self.http_request('GET', self.get_ixos_uri() + '/perfcounters', params=params)
+    
+    def get_portstats(self, params=None):
+        return self.http_request('GET', self.get_ixos_uri() + '/portstats', params=params)
 
     def take_ownership(self, resource_id):
         return self.http_request(
@@ -224,6 +214,26 @@ class IxRestSession(object):
             'POST',
             self.get_ixos_uri() + '/cards/%d/operations/hotswap' % resource_id
         )
+        
+    def get_license(self, params=None):
+        url = f'https://{self.chassis_ip}/platform/api/v2/licensing/servers'
+        output = self.http_request('GET', url, params=params).data
+        for i in range(len(output)):
+            license_dict = { output[i]['host'] : {'host_id': ""}}
+            license_dict['license_server'] =  output[i]['license_server'] if output[i].get('license_server') else None
+        return license_dict   
+
+
+    def get_license_activation(self, params=None):
+        url = f'https://{self.chassis_ip}/platform/api/v2/licensing/servers/1/operations/retrievelicenses'
+        url = self.http_request('POST', url, params=params)
+        if str(url) != '<Response [200]>':
+            #print('Linux Chassis')
+            return self.http_request('GET', url, params=params)
+        else:
+            #print('Windows Chassis')
+            id_url = f'https://{self.chassis_ip}/platform/api/v2/licensing/servers/1/operations/retrievelicenses/1/result'
+            return self.http_request('GET', id_url, params=params)
 
 
 if __name__ == '__main__':
