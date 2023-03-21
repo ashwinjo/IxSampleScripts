@@ -56,7 +56,7 @@ apiServerIp = '10.36.236.121'
 
 # For Linux API server only
 username = 'admin'
-password = 'Kimchi123Kimchi123!'
+password = 'XXXXXXX'
 
 # The IP address for your Ixia license server(s) in a list.
 licenseServerIp = ['10.36.236.121']
