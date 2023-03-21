@@ -553,8 +553,6 @@ try:
         for quickTestHandle in rfcTest:
             output, ports_to_connect, ports_to_disconnect = connect_ports_as_per_quicktest_and_media(rfcTest, ixNetwork)
             if output:
-                import sys
-                sys.exit()
                 # Checking Control Plane
                 if verifyNgpfIsLayer3:
                     ixNetwork.StartAllProtocols(Arg1='sync')
