@@ -1,7 +1,7 @@
 """
 loadQuickTest.py:
 
-   Tested with two back-2-back Ixia ports
+   Tested with two back-2-back Ixia ports. One port in fiber and other in copper mode
 
    RestPy has a limitation on running Quick Test.  It could not modify Quick Test parameters on a 
    Windows API server.
@@ -16,7 +16,7 @@ loadQuickTest.py:
      retrieve all of the csv result files with a timestamp on them so they don't overwrite your existing
      result files.
 
-   - Optional: Assign ports or use the ports that are in the saved config file.
+   - Based on the expectedMedia Type we can now select which ports to connect/disconnect.
    - Start all protocols
    - Verify all protocols
    - Start traffic 
@@ -56,7 +56,7 @@ apiServerIp = '10.36.236.121'
 
 # For Linux API server only
 username = 'admin'
-password = 'XXXXXXX'
+password = 'Kimchi123Kimchi123!'
 
 # The IP address for your Ixia license server(s) in a list.
 licenseServerIp = ['10.36.236.121']
@@ -528,14 +528,14 @@ def releasePorts(ixNetwork, ports='all'):
 try:
     # LogLevel: none, info, warning, request, request_response, all
     session = SessionAssistant(IpAddress=apiServerIp, RestPort=None, UserName=username, Password=password, 
-                               SessionName=None, SessionId=14, ApiKey=None, ApplicationType=applicationType,
+                               SessionName=None, SessionId=None, ApiKey=None, ApplicationType=applicationType,
                                ClearConfig=False, LogLevel='info', LogFilename='restpy.log')
 
     ixNetwork = session.Ixnetwork
 
-    # # # Load a saved config file
-    # ixNetwork.info('Loading config file: {0}'.format("/Users/ashwjosh/IxNetworkAutomationDemo/Newnew4250.ixncfg"))
-    # ixNetwork.LoadConfig(Files("/Users/ashwjosh/IxNetworkAutomationDemo/Newnew4250.ixncfg", local_file=True))
+    # # Load a saved config file
+    ixNetwork.info('Loading config file: {0}'.format("/Users/ashwjosh/IxNetworkAutomationDemo/Newnew4250.ixncfg"))
+    ixNetwork.LoadConfig(Files("/Users/ashwjosh/IxNetworkAutomationDemo/Newnew4250.ixncfg", local_file=True))
 
 
 
@@ -601,10 +601,13 @@ try:
 
     if debugMode == False:
         # For Linux and Windows Connection Manager only
-        # session.Session.remove()
-        pass
+        session.Session.remove()
 
 except Exception as errMsg:
     print('\n%s' % traceback.format_exc())
-    # if debugMode == False and 'session' in locals():
-    #     session.Session.remove()
+    if debugMode == False and 'session' in locals():
+        session.Session.remove()
+
+
+
+
