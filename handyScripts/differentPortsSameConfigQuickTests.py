@@ -1,7 +1,7 @@
 """
 loadQuickTest.py:
 
-   Tested with two back-2-back Ixia ports. One port in fiber and other in copper mode
+   Tested with two back-2-back Ixia ports
 
    RestPy has a limitation on running Quick Test.  It could not modify Quick Test parameters on a 
    Windows API server.
@@ -16,7 +16,7 @@ loadQuickTest.py:
      retrieve all of the csv result files with a timestamp on them so they don't overwrite your existing
      result files.
 
-   - Based on the expectedMedia Type we can now select which ports to connect/disconnect.
+   - Optional: Assign ports or use the ports that are in the saved config file.
    - Start all protocols
    - Verify all protocols
    - Start traffic 
@@ -48,6 +48,7 @@ import json, sys, os, re, time, datetime, traceback
 
 # Import the RestPy module
 from ixnetwork_restpy import SessionAssistant, Files
+from ixnetwork_restpy.errors import BadRequestError
 
 # IxNetwork API server platform options: windows|linux
 osPlatform = 'windows'
@@ -56,7 +57,7 @@ apiServerIp = '10.36.236.121'
 
 # For Linux API server only
 username = 'admin'
-password = 'Kimchi123Kimchi123!'
+password = 'XXXXX!'
 
 # The IP address for your Ixia license server(s) in a list.
 licenseServerIp = ['10.36.236.121']
@@ -458,46 +459,63 @@ def verifyNgpfIsLayer3(topologyName):
 
     return isLayer3
 
+def save_port_mappings_in_original_configuration(vports):
+    iface_assignement_map = {}
+    for index, port in enumerate(vports): 
+            portobj = ixNetwork.Vport.find()[index]
+            portName = portobj.Name 
+            assignedTo = portobj.AssignedTo
+            ip, card, port = assignedTo.split(":")
+            iface_assignement_map.update(
+            {
+                portName: assignedTo
+            })
+            
+    return iface_assignement_map
 
-def connect_ports_as_per_quicktest_and_media(rfc_test, ixNetwork):
+def assign_as_per_map_at_test_start(iface_assignement_map):
+    portMap = session.PortMapAssistant()
+    for portName, assignedTo in iface_assignement_map.items():
+        assignedTo = iface_assignement_map.get(portName)
+        ip, card, port = assignedTo.split(":") 
+        portMap.Map(IpAddress=ip, CardId=card, PortId=port, Name=portName) 
+        
+
+def connect_ports_as_per_quicktest_and_media(rfc_test, ixNetwork, iface_assignement_map):
     try:
         expectedMedia = rfc_test[1]
         # Get vports in existing Configuration 
-        vports = ixNetwork.Vport.find() 
-        
+    
         ports_to_connect = []
         ports_to_disconnect = []
-        for index,port in enumerate(vports): 
+        for index,port in enumerate(vports):
             portobj = ixNetwork.Vport.find()[index]
             portName = portobj.Name 
-            ConnectionState = portobj.ConnectionState 
-            at = portobj.AssignedTo
             media_type = port.L1Config.NovusTenGigLan.Media
-            
-            ip, card, port = at.split(":") 
         
-            if media_type == expectedMedia and ConnectionState == 'assignedUnconnected':
-                ports_to_connect.append((ip, card, port, portName))
-            elif media_type == expectedMedia and 'connected' in ConnectionState:
-                print(f'{at} is already connected')
-            elif media_type != expectedMedia and ConnectionState == 'assignedUnconnected':
-                print(f'{at} is already assigned')
+            if media_type == expectedMedia:
+                ports_to_connect.append(portName)
             else:
-                ports_to_disconnect.append((ip, card, port, portName))
+                ports_to_disconnect.append(portName)
                 
         if ports_to_connect:
             portMap = session.PortMapAssistant()
-            for ip, card, port, portName in ports_to_connect:
-                print(ip, card, port, portName)
+            for portName in ports_to_connect:
+                assignedTo = iface_assignement_map.get(portName)
+                ip, card, port = assignedTo.split(":") 
                 portMap.Map(IpAddress=ip, CardId=card, PortId=port, Name=portName) 
             portMap.Connect(forceTakePortOwnership, IgnoreLinkUp=True) 
             
         if ports_to_disconnect:
             portMap = session.PortMapAssistant()
+            assignedTo = iface_assignement_map.get(portName)
+            ip, card, port = assignedTo.split(":") 
             portList = []
-            for ip, card, port, portName in ports_to_disconnect:
-                portList.append([ip, card, port])
-            releasePorts(ixNetwork, ports=portList)
+            for portName in ports_to_disconnect:
+                assignedTo = iface_assignement_map.get(portName)
+                ip, card, port = assignedTo.split(":") 
+                portMap.Map(IpAddress=ip, CardId=card, PortId=port, Name=portName) 
+            portMap.Clear(Disconnect=True) 
         
         print("Connect", ports_to_connect)
         print("Disconnect", ports_to_disconnect)
@@ -533,66 +551,81 @@ try:
 
     ixNetwork = session.Ixnetwork
 
-    # # Load a saved config file
+    # Load a saved config file
     ixNetwork.info('Loading config file: {0}'.format("/Users/ashwjosh/IxNetworkAutomationDemo/Newnew4250.ixncfg"))
     ixNetwork.LoadConfig(Files("/Users/ashwjosh/IxNetworkAutomationDemo/Newnew4250.ixncfg", local_file=True))
 
 
-
+    vports = ixNetwork.Vport.find() 
+    iface_assignement_map = save_port_mappings_in_original_configuration(vports)
+        
 
     # Create a timestamp for test result files.
     # To append a timestamp in the CSV result files so existing result files won't get overwritten.
     timestamp = Timestamp()
 
     # These are all the RFC tests to search for in the saved config file.
-    for rfcTest in [(ixNetwork.QuickTest.Rfc2544throughput.find(), "copper")]:
+    for rfcTest in [(ixNetwork.QuickTest.Rfc2544throughput.find(), "fiber"),
+                    (ixNetwork.QuickTest.Rfc2544throughput.find(), "copper"),
+                    (ixNetwork.QuickTest.Rfc2544throughput.find(), "fiber")]:
         if not rfcTest:
             # If the loaded QT config file doesn't have rfcTest created, then skip it.
             continue
        
         for quickTestHandle in rfcTest:
-            output, ports_to_connect, ports_to_disconnect = connect_ports_as_per_quicktest_and_media(rfcTest, ixNetwork)
+            assign_as_per_map_at_test_start(iface_assignement_map)
+            output, ports_to_connect, ports_to_disconnect = connect_ports_as_per_quicktest_and_media(rfcTest, ixNetwork, iface_assignement_map)
             if output:
                 # Checking Control Plane
                 if verifyNgpfIsLayer3:
-                    ixNetwork.StartAllProtocols(Arg1='sync')
-
-                    ixNetwork.info('Verify protocol sessions\n')
-                    protocolSummary = session.StatViewAssistant('Protocols Summary')
-                    protocolSummary.CheckCondition('Sessions Not Started', protocolSummary.EQUAL, 0)
-                    protocolSummary.CheckCondition('Sessions Down', protocolSummary.EQUAL, 0)
-                    ixNetwork.info(protocolSummary)
-                
-                quickTestName = quickTestHandle.Name        
-                print(f"Executing {quickTestName} for ports", ports_to_connect)
-                print(f"Disconnecting ports", ports_to_disconnect)
-                
-                ixNetwork.info('\n\nQuickTestHandle: {}\n'.format(quickTestHandle))
-                match = re.search('/api/.*/quickTest/(.*)/[0-9]+', quickTestHandle.href)
-                rfc = match.group(1)
-                rfcTest = '{}_{}'.format(rfc, quickTestName)
-                ixNetwork.info('\n\nExecuting Quick Test: {}\n'.format(rfcTest))
-
-                quickTestHandle.Apply()
-                quickTestHandle.Start()
-                verifyQuickTestInitialization(quickTestHandle)
-                monitorQuickTestRunningProgress(quickTestHandle)
-
-                timestamp.now()
-
-                if osPlatform == 'linux':
-                    # Copy CSV from either a Windows or Linux API server to local linux filesystem
-                    getQuickTestCsvFiles(quickTestHandle, copyToPath=linuxDestinationFolder, rfcTest=rfcTest, includeTimestamp=True)
-
                     try:
-                        pdfFile = quickTestHandle.GenerateReport()
-                        destPdfTestResult = addTimestampToFile(rfcTest=rfcTest, filename=pdfFile)
-                        ixNetwork.info('Copying PDF results to: {}'.format(linuxDestinationFolder+destPdfTestResult))
-                        session.Session.DownloadFile(pdfFile, linuxDestinationFolder+'/'+destPdfTestResult)
-                    except:
-                        # If using Linux API server, a PDF result file is not supported for all rfc tests.
-                        ixNetwork.warn('\n\nPDF for {} is not supported\n'.format(rfc))
-                
+                        ixNetwork.StartAllProtocols(Arg1='sync')
+                    
+                        
+                        print("Started For ", rfcTest)
+                        ixNetwork.info('Verify protocol sessions\n')
+                        protocolSummary = session.StatViewAssistant('Protocols Summary')
+                        protocolSummary.CheckCondition('Sessions Not Started', protocolSummary.EQUAL, 0)
+                        protocolSummary.CheckCondition('Sessions Down', protocolSummary.EQUAL, 0)
+                        ixNetwork.info(protocolSummary)
+                    except BadRequestError:
+                        print("Ignoring Disconnected ports when starting protocols")
+                    
+                    quickTestName = quickTestHandle.Name        
+                    print(f"Executing {quickTestName} for ports", ports_to_connect)
+                    print(f"Disconnecting ports", ports_to_disconnect)
+                    
+                    ixNetwork.info('\n\nQuickTestHandle: {}\n'.format(quickTestHandle))
+                    match = re.search('/api/.*/quickTest/(.*)/[0-9]+', quickTestHandle.href)
+                    rfc = match.group(1)
+                    rfcTest = '{}_{}'.format(rfc, quickTestName)
+                    ixNetwork.info('\n\nExecuting Quick Test: {}\n'.format(rfcTest))
+
+                    assign_as_per_map_at_test_start(iface_assignement_map)
+                    try:
+                        quickTestHandle.Apply()
+                        quickTestHandle.Start()
+                        verifyQuickTestInitialization(quickTestHandle)
+                        monitorQuickTestRunningProgress(quickTestHandle)
+                    except BadRequestError:
+                        print ("Ignoring since these ports are disconnected")
+
+                    timestamp.now()
+
+                    if osPlatform == 'linux':
+                        # Copy CSV from either a Windows or Linux API server to local linux filesystem
+                        getQuickTestCsvFiles(quickTestHandle, copyToPath=linuxDestinationFolder, rfcTest=rfcTest, includeTimestamp=True)
+
+                        try:
+                            pdfFile = quickTestHandle.GenerateReport()
+                            destPdfTestResult = addTimestampToFile(rfcTest=rfcTest, filename=pdfFile)
+                            ixNetwork.info('Copying PDF results to: {}'.format(linuxDestinationFolder+destPdfTestResult))
+                            session.Session.DownloadFile(pdfFile, linuxDestinationFolder+'/'+destPdfTestResult)
+                        except:
+                            # If using Linux API server, a PDF result file is not supported for all rfc tests.
+                            ixNetwork.warn('\n\nPDF for {} is not supported\n'.format(rfc))
+            break
+                        
 
             # Examples to show how to stop and remove a quick test.
             # Uncomment one or both if you want to use them.
@@ -601,12 +634,13 @@ try:
 
     if debugMode == False:
         # For Linux and Windows Connection Manager only
-        session.Session.remove()
+        # session.Session.remove()
+        pass
 
 except Exception as errMsg:
     print('\n%s' % traceback.format_exc())
-    if debugMode == False and 'session' in locals():
-        session.Session.remove()
+    # if debugMode == False and 'session' in locals():
+    #     session.Session.remove()
 
 
 
