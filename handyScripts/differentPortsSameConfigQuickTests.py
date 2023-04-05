@@ -572,7 +572,7 @@ try:
             # If the loaded QT config file doesn't have rfcTest created, then skip it.
             continue
        
-        for quickTestHandle in rfcTest:
+        for quickTestHandle in rfcTest[0]:
             assign_as_per_map_at_test_start(iface_assignement_map)
             output, ports_to_connect, ports_to_disconnect = connect_ports_as_per_quicktest_and_media(rfcTest, ixNetwork, iface_assignement_map)
             if output:
@@ -624,7 +624,7 @@ try:
                         except:
                             # If using Linux API server, a PDF result file is not supported for all rfc tests.
                             ixNetwork.warn('\n\nPDF for {} is not supported\n'.format(rfc))
-            break
+            
                         
 
             # Examples to show how to stop and remove a quick test.
