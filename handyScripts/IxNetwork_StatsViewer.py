@@ -9,7 +9,7 @@ from typing import List
 
 
 
-session_assistant = SessionAssistant(IpAddress="10.36.236.121", UserName="admin", Password="Kimchi123Kimchi123!",
+session_assistant = SessionAssistant(IpAddress="10.36.236.121", UserName="admin", Password="XXXXXXXX!",
                             LogLevel=SessionAssistant.LOGLEVEL_INFO, 
                             ClearConfig=False,
                             SessionId=5)
