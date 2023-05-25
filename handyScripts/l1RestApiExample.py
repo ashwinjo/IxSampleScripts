@@ -187,7 +187,7 @@ if __name__ == "__main__":
     
     # When connecting to Linux API Server
     tl1s = TestL1Settings(ipaddr='10.36.236.121', user='admin',
-                          password='Kimchi123Kimchi123!', 
+                          password='XXXXXXX!', 
                           session_name="testbed_ashwjosh")
     
        
