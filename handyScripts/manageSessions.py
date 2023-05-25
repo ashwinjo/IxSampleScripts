@@ -1,97 +1,96 @@
-"""
-manageSessions.py
-
-   Connect to a Linux API server
-      - View or delete open sessions
-
-Supports IxNetwork API servers:
-   - Windows, Windows Connection Mgr and Linux
-
-Requirements
-   - IxNetwork 8.50
-   - Python 2.7 and 3+
-   - pip install requests
-   - pip install -U --no-cache-dir ixnetwork_restpy
-
-Script development API doc:
-   - The doc is located in your Python installation site-packages/ixnetwork_restpy/docs/index.html
-   - On a web browser:
-         - If installed in Windows: enter: file://c:/<path_to_ixnetwork_restpy>/docs/index.html
-         - If installed in Linux: enter: file:///<path_to_ixnetwork_restpy>/docs/index.html
-"""
-
-import sys
-import pandas
-# Import the RestPy module
 from ixnetwork_restpy.testplatform.testplatform import TestPlatform
-
-
-def get_session_information(testPlatform, Id):
-        # Show all open sessions
-        session_list = []
-        for session in testPlatform.Sessions.find():
-            sessionId = session[0].Id
-            session_info = testPlatform.Sessions.find(Id=sessionId)
-            ixNetwork = session_info.Ixnetwork.Globals
-            sessionName = session_info.Name
-            exceedsThreshold = check_if_session_greater_than_thresholds(ixNetwork.SessionUpTime)
-            session_list.append({"sessionId": sessionId, 
-                                 "sessionName": sessionName,
-                                 "sessionUser":ixNetwork.Username,
-                                 "sessionUptime": ixNetwork.SessionUpTime,
-                                 "exceedsThreshold": str(exceedsThreshold)})
-        return session_list
-                
+import pandas as pd
+import sys
 
 def deleteSession(testPlatform, Id):
     # Delete a particular session ID
     testPlatform.Sessions.find(Id=Id).remove()
+    print(f"====> Session ID {Id} Deleted")
+
+def get_session_information(testPlatform, Id):
+    session = testPlatform.Sessions.find(Id=Id)
+    sessionStatus = "NOERROR"
+   
+    ixNetwork = session.Ixnetwork.Globals
+    errorList = session.Ixnetwork.Globals.find().AppErrors.find().Error.find(ErrorLevel='kError')
+    errorCount = session.Ixnetwork.Globals.find().AppErrors.find().ErrorCount
+    list_of_errors = [a.Name for a in errorList]
+    if list_of_errors: sessionStatus = "ERROR"
+         
+    sessionName = session.Name
+    vports = session.Ixnetwork.Vport.find()
+    port_info = []
     
+    for index ,port in enumerate(vports):
+            portobj = vports[index]
+            connectionState = portobj.ConnectionState
+            assignedDisplayName = portobj.AssignedToDisplayName
+            port_info.append(f"{assignedDisplayName}_{connectionState}")
     
-def check_if_session_greater_than_thresholds(uptime):
-    from  datetime import datetime, timedelta
-    days = uptime.split()[0]
-    hours = uptime.split()[2]
-
-    if int(days) > 2:
-        return False
-    return True
-
-
-def main(operation=None, Id=None):
-    osPlatform = 'linux'
-
-    if len(sys.argv) > 1:
-        # Command line input: windows, windowsConnectionMgr or linux
-        osPlatform = sys.argv[1]
-
-    # Change API server values to use your setup
-    if osPlatform == 'windowsConnectionMgr':
-        platform = 'windows'
-        apiServerIp = '192.168.70.3'
-        apiServerPort = 11009
-
-    # Change API server values to use your setup
-    if osPlatform == 'linux':
-        platform = 'linux'
-        apiServerIp = '10.36.236.121'
-        apiServerPort = 443
-        username = 'admin'
-        password = 'Kimchi123Kimchi123!'
-
-    try:
-        testPlatform = TestPlatform(apiServerIp, rest_port=apiServerPort, platform=platform)
-        # authenticate with username and password
-        testPlatform.Authenticate(username, password)
+    return [Id, sessionName, sessionStatus, errorCount, list_of_errors, ixNetwork.Username]
         
-        if operation == "show":
-            session_list = get_session_information(testPlatform, Id)
-            print(pandas.DataFrame(session_list))
-        if operation == "remove":
-            deleteSession(testPlatform, Id)            
-    except Exception as errMsg:
-        print('\nrestPy.Exception:', errMsg)
+def get_all_sessions():
+    # Show all open sessions
+    session_list = []
+    for session in testPlatform.Sessions.find():
+        sessionId = session[0].Id
+        session_list.append(get_session_information(testPlatform, sessionId))
+        
+    df = pd.DataFrame(session_list, columns = ['sessionId', 'sessionName', 'sessionStatus', 'errorCount', 'ErrorList', 'User'])
+    print("==== Existing Session Information ====")
+    print(df.to_string(index=False))
+    
+    return session_list
+    
+def delete_sessions_in_state(session_list, state="error"):
+    for sessionItem in session_list:
+        if sessionItem[2].lower() == state:
+            deleteSession(testPlatform, sessionItem[0])
 
 
-if __name__ == "__main__":
-    main(operation="show")
+osPlatform = 'linux'
+
+# Change API server values to use your setup
+if osPlatform == 'linux':
+    platform = 'linux'
+    apiServerIp = sys.argv[1]
+    apiServerPort = 443
+    username = sys.argv[2]
+    password = sys.argv[3]
+
+try:
+    testPlatform = TestPlatform(apiServerIp, rest_port=apiServerPort, platform=platform)
+    testPlatform.Authenticate(username, password)
+    
+    session_list = []
+    session_list_before = get_all_sessions()
+    delete_sessions_in_state(session_list_before)
+    session_list_after = get_all_sessions()
+    print(f"Sessions Deleted = {len(session_list_before) - len(session_list_after)}")
+
+except Exception as errMsg:
+       raise Exception(errMsg)
+   
+
+"""Sample Output
+
+==== Existing Session Information ====
+ sessionId       sessionName sessionStatus  errorCount                                                                                                                                                                                                              ErrorList                                  User
+         3  IxNetwork Test 3       NOERROR           0                                                                                                                                                                                                                     []  IxNetwork/ixnetworkweb/admin-3-28261
+         4  IxNetwork Test 4         ERROR           1                                                                                                                                                                                               [Ports forcefully taken]  IxNetwork/ixnetworkweb/admin-4-32172
+        11 IxNetwork Test 11       NOERROR           0                                                                                                                                                                                                                     [] IxNetwork/ixnetworkweb/admin-11-10762
+        12 IxNetwork Test 12       NOERROR           0                                                                                                                                                                                                                     [] IxNetwork/ixnetworkweb/admin-12-10908
+        18 IxNetwork Test 18         ERROR           1                                                                                                                                                                                               [Ports forcefully taken]  IxNetwork/ixnetworkweb/admin-18-8492
+        19 IxNetwork Test 19         ERROR           4 [Ports forcefully taken, No ports assigned to topology 'Topo1'. Please connect Ixia hardware., No ports assigned to topology 'Topo2'. Please connect Ixia hardware., No ports assigned. Please connect Ixia hardware.]  IxNetwork/ixnetworkweb/admin-19-9077
+====> Session ID 4 Deleted
+====> Session ID 18 Deleted
+====> Session ID 19 Deleted
+==== Existing Session Information ====
+ sessionId       sessionName sessionStatus  errorCount ErrorList                                  User
+         3  IxNetwork Test 3       NOERROR           0        []  IxNetwork/ixnetworkweb/admin-3-28261
+        11 IxNetwork Test 11       NOERROR           0        [] IxNetwork/ixnetworkweb/admin-11-10762
+        12 IxNetwork Test 12       NOERROR           0        [] IxNetwork/ixnetworkweb/admin-12-10908
+Sessions Deleted = 3
+
+
+"""
