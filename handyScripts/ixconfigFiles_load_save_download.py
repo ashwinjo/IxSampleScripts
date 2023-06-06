@@ -17,7 +17,7 @@ debugMode = False
 # Forcefully take port ownership if the portList are owned by other users.
 forceTakePortOwnership = True
 
-configFile = 'abc_new_bgp_ngpf.ixncfg'
+configFile = 'bgp_ngpf.ixncfg'
 # Connect to the API server
 
 # LogLevel: none, info, warning, request, request_response, all
@@ -36,16 +36,19 @@ ixNetwork.LoadConfig(Files(configFile, local_file=True))
 
 # Custom code based on customer use case
 
+
+# Config changed below
 topology = ixNetwork.Topology.find()
 topology.Name = "New Topology Name"
 
+# Name for new config file to be saved locally.
 new_config_file_name = f"new_{configFile}"
 
 # File will be uploaded to the server to the default file storage location.
 ixNetwork.SaveConfig(Files(new_config_file_name, local_file=True))
 
 # Get file from local server and download it to local file system.
-session.Session.DownloadFile(new_config_file_name, f"abc_{new_config_file_name}")
+session.Session.DownloadFile(new_config_file_name, f"local_fs_{new_config_file_name}")
 
 
     
