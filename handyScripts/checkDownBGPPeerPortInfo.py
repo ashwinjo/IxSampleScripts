@@ -25,7 +25,35 @@ def check_for_down_sessions(session, vport_map):
         value_dict.update({"PortsTopoConnectedTo": port_connected_to})
         dgs = topo.DeviceGroup.find() \
         
-        for dg in dgs:
+        value_dict = get_ipv4_neighbors(dgs, value_dict)
+        value_dict_final = get_ipv6_neighbors(dgs, value_dict)
+        
+        down_bgp_peer_session_topo_port_info.append(value_dict_final)
+    return down_bgp_peer_session_topo_port_info
+
+
+def get_ipv6_neighbors(dgs, value_dict):
+    for dg in dgs:
+            bgpipv6peer = dg.Ethernet.find() \
+            .Ipv6.find() \
+            .BgpIpv6Peer.find()
+            dg_name = dg.Name
+            
+            value_dict.update({"DeviceGroupName": dg_name})
+            for a in bgpipv6peer:
+                peer_status_map = {}
+                bgpipv4peer_name = a.Name
+            
+                
+                for ip, status in zip(a.LocalIpv6Ver2, a.SessionStatus):
+                    if status.lower() == 'down':
+                        peer_status_map.update({ip:status})
+            value_dict.update({"BgpIpv6PeerName": bgpipv4peer_name})
+            value_dict.update({"bgpv6DownPeerInfo": peer_status_map})
+    return value_dict
+
+def get_ipv4_neighbors(dgs, value_dict):
+    for dg in dgs:
             bgpipv4peer = dg.Ethernet.find() \
             .Ipv4.find() \
             .BgpIpv4Peer.find()
@@ -41,9 +69,8 @@ def check_for_down_sessions(session, vport_map):
                     if status.lower() == 'down':
                         peer_status_map.update({ip:status})
             value_dict.update({"BgpIpv4PeerName": bgpipv4peer_name})
-            value_dict.update({"bgpDownPeerInfo": peer_status_map})
-        down_bgp_peer_session_topo_port_info.append(value_dict)
-    return down_bgp_peer_session_topo_port_info
+            value_dict.update({"bgpv4DownPeerInfo": peer_status_map})
+    return value_dict
             
             
 def get_vport_map(session):
@@ -57,10 +84,10 @@ def get_vport_map(session):
 
 
 def main():
-    apiServerIp = 'X.X.X.X'
+    apiServerIp = '10.36.236.121'
     # For Linux API server only
     username = 'admin'
-    password = 'XXXXXXXXXXXXXXXX'
+    password = 'XXXXXXXXX'
     session = SessionAssistant(IpAddress=apiServerIp, RestPort=None, UserName=username, Password=password, 
                                 SessionName=None, SessionId=31, ApiKey=None,
                                 ClearConfig=False, LogLevel='info', LogFilename='restpy.log')
@@ -77,46 +104,45 @@ if __name__ == "__main__":
 
 """ Sample Output:
 
-base) ashwjosh@C0HD4NKHCX IxNetworkAutomationDemo % /usr/local/bin/python3 /Users/ashwjosh/IxNetworkAutomationDemo/check_down_bgp_peers.py
-2023-06-21 19:57:28 [ixnetwork_restpy.connection tid:8269929984] [INFO] using python version 3.11.0 (v3.11.0:deaf509e8f, Oct 24 2022, 14:43:23) [Clang 13.0.0 (clang-1300.0.29.30)]
-2023-06-21 19:57:28 [ixnetwork_restpy.connection tid:8269929984] [INFO] using ixnetwork-restpy version 1.1.7
-2023-06-21 19:57:28 [ixnetwork_restpy.connection tid:8269929984] [WARNING] Verification of certificates is disabled
-2023-06-21 19:57:28 [ixnetwork_restpy.connection tid:8269929984] [INFO] Determining the platform and rest_port using the X.X.X.X address...
-2023-06-21 19:57:28 [ixnetwork_restpy.connection tid:8269929984] [WARNING] Unable to connect to http://X.X.X.X:443.
-2023-06-21 19:57:29 [ixnetwork_restpy.connection tid:8269929984] [INFO] Connection established to `https://X.X.X.X:443 on linux`
-2023-06-21 19:57:29 [ixnetwork_restpy.connection tid:8269929984] [INFO] Using IxNetwork api server version 9.30.2212.7
-2023-06-21 19:57:29 [ixnetwork_restpy.connection tid:8269929984] [INFO] User info IxNetwork/ixnetworkweb/admin-31-22924
-[   {   'BgpIpv4PeerName': 'BGP Peer 1',
-        'DeviceGroupName': 'Device Group 2',
-        'PortsTopoConnectedTo': [   '10.36.236.121;04;07',
-                                    '10.36.236.121;02;15',
-                                    '10.36.236.121;02;16'],
-        'TopologyName': 'Topology 1',
-        'bgpDownPeerInfo': {   '20.1.1.1': 'down',
-                               '20.1.10.1': 'down',
-                               '20.1.11.1': 'down',
-                               '20.1.12.1': 'down',
-                               '20.1.13.1': 'down',
-                               '20.1.14.1': 'down',
-                               '20.1.15.1': 'down',
-                               '20.1.2.1': 'down',
-                               '20.1.3.1': 'down',
-                               '20.1.4.1': 'down',
-                               '20.1.5.1': 'down',
-                               '20.1.6.1': 'down',
-                               '20.1.7.1': 'down',
-                               '20.1.8.1': 'down',
-                               '20.1.9.1': 'down'}},
-    {   'BgpIpv4PeerName': 'BGP Peer 2',
-        'DeviceGroupName': 'Device Group 4',
-        'PortsTopoConnectedTo': ['10.36.236.121;04;08'],
-        'TopologyName': 'Topology 3',
-        'bgpDownPeerInfo': {   '20.1.1.2': 'down',
-                               '20.1.2.2': 'down',
-                               '20.1.3.2': 'down',
-                               '20.1.4.2': 'down',
-                               '20.1.5.2': 'down'}}]
+(base) ashwjosh@C0HD4NKHCX IxNetworkAutomationDemo % /usr/local/bin/python3 /Users/ashwjosh/IxNetworkAutomationDemo/check_down_bgp_peers.py
+2023-06-23 19:33:57 [ixnetwork_restpy.connection tid:8269929984] [INFO] using python version 3.11.0 (v3.11.0:deaf509e8f, Oct 24 2022, 14:43:23) [Clang 13.0.0 (clang-1300.0.29.30)]
+2023-06-23 19:33:57 [ixnetwork_restpy.connection tid:8269929984] [INFO] using ixnetwork-restpy version 1.1.7
+2023-06-23 19:33:57 [ixnetwork_restpy.connection tid:8269929984] [WARNING] Verification of certificates is disabled
+2023-06-23 19:33:57 [ixnetwork_restpy.connection tid:8269929984] [INFO] Determining the platform and rest_port using the 10.36.236.121 address...
+2023-06-23 19:33:57 [ixnetwork_restpy.connection tid:8269929984] [WARNING] Unable to connect to http://10.36.236.121:443.
+2023-06-23 19:33:57 [ixnetwork_restpy.connection tid:8269929984] [INFO] Connection established to `https://10.36.236.121:443 on linux`
+2023-06-23 19:33:58 [ixnetwork_restpy.connection tid:8269929984] [INFO] Using IxNetwork api server version 9.30.2212.7
+2023-06-23 19:33:58 [ixnetwork_restpy.connection tid:8269929984] [INFO] User info IxNetwork/ixnetworkweb/admin-31-22924
 
-
-
+[{
+		'BgpIpv4PeerName': 'bgp_1',
+		'BgpIpv6PeerName': 'BGP+ Peer 3',
+		'DeviceGroupName': 'DG1',
+		'PortsTopoConnectedTo': ['10.36.236.121;04;07'],
+		'TopologyName': 'Topo1',
+		'bgpv4DownPeerInfo': {
+			'1.1.1.1': 'down',
+			'1.1.1.2': 'down'
+		},
+		'bgpv6DownPeerInfo': {
+			'2000:0:2:1:0:0:0:2': 'down',
+			'2000:0:2:2:0:0:0:2': 'down'
+		}
+	},
+	{
+		'BgpIpv4PeerName': 'bgp_2',
+		'BgpIpv6PeerName': 'BGP+ Peer 1',
+		'DeviceGroupName': 'DG2',
+		'PortsTopoConnectedTo': ['10.36.236.121;04;08'],
+		'TopologyName': 'Topo2',
+		'bgpv4DownPeerInfo': {
+			'1.1.1.3': 'down',
+			'1.1.1.4': 'down'
+		},
+		'bgpv6DownPeerInfo': {
+			'2000:0:1:1:0:0:0:2': 'down',
+			'2000:0:1:2:0:0:0:2': 'down'
+		}
+	}
+]
 """"
