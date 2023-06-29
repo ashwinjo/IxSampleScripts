@@ -2,7 +2,7 @@
 	"tgenConfig": {
 		"apiServerIp": "10.36.236.121",
         "apiServerUsername": "admin",
-        "apiServerPassword": "XXXXXXXXXXX",
+        "apiServerPassword": "XXXXXXX",
 		"endpoint2": {
 			"ixia-chassis-ip": "10.36.236.121",
 			"ixia-chassis-card": "4",
@@ -13,7 +13,7 @@
 				"vport": "Port_2",
 				"devicegroup": {
 					"name": "DG2",
-					"multipier": 3,
+					"multipier": 2,
 					"ethernet": {
 						"name": "Eth2",
 						"vlanstartvalue": 103,
@@ -27,12 +27,15 @@
 						"gatewayIncrement": "0.0.0.0"
 					},
 					"bgp": {
-						"name": "BGPPeer2"
+						"name": "BGPPeer2",
+                        "increment": "1.1.1.4",
+                        "step_value": "0.0.0.1",
+                        "localas2value": "102"
 					}
 				},
 				"networkpools": {
 					"name": "BGP-Routes2",
-					"multiplier": "1",
+					"multiplier": "100",
 					"numberOfIpv4PrefixPools": 1,
 					"start_value": "20.10.0.1",
 					"step_value": "0.0.0.1",
@@ -49,7 +52,7 @@
 					"vport": "Port_1",
 					"devicegroup": {
 						"name": "DG1",
-						"multipier": 3,
+						"multipier": 2,
 						"ethernet": {
 							"name": "Eth1",
 							"vlanstartvalue": 103,
@@ -63,12 +66,15 @@
 							"gatewayIncrement": "0.0.0.0"
 						},
 						"bgp": {
-							"name": "BGPPeer1"
+							"name": "BGPPeer1", 
+                            "increment": "1.1.1.1",
+                            "step_value": "0.0.0.1",
+                            "localas2value": "101"
 						}
 					},
 					"networkpools": {
 						"name": "BGP-Routes1",
-						"multiplier": "1",
+						"multiplier": "100",
 						"numberOfIpv4PrefixPools": 1,
 						"start_value": "10.10.0.1",
 						"step_value": "0.0.0.1",
@@ -79,7 +85,8 @@
 			"traffic": [{
 				"name": "BGP Traffic",
 				"BiDirectional": true,
-				"TrafficType": "ipv4"
+				"TrafficType": "ipv4",
+                "TrackingType": ["sourceDestEndpointPair0"]
 			}]
 		},
 		"DUTConfig": {
