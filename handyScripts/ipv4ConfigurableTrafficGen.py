@@ -1,4 +1,4 @@
-from ixnetwork_restpy import SessionAssistant
+from ixnetwork_restpy import SessionAssistant, Files
 import json
 
 import time
@@ -120,20 +120,29 @@ class TrafficGenerator(object):
             self.session_assistant.Ixnetwork.info('\nRow:{}  TxPort:{}  RxPort:{}  TxFrames:{}  RxFrames:{}\n'.format(
                 rowNumber, flowStat['Tx Port'], flowStat['Rx Port'],
                 flowStat['Tx Frames'], flowStat['Rx Frames']))
+        time.sleep(120)
         self.session_assistant.Ixnetwork.Traffic.StopStatelessTrafficBlocking()
-       
     
- 
- 
+    def _download_configuration_file(self):
+        # Name for new config file to be saved locally.
+        new_config_file_name = self.session_assistant.Ixnetwork.Globals.ConfigFileName
+        # File will be uploaded to the server to the default file storage location.
+        self.session_assistant.Ixnetwork.SaveConfig(Files(new_config_file_name, local_file=True))
+        # /root/.local/share/Ixia/IxNetwork/data/NewConfig.admin35.4774.ixncfg
+        new_config_file_name = new_config_file_name.split("/")[-1]
+        # Get file from local server and download it to local file system.
+        self.session_assistant.Session.DownloadFile(new_config_file_name, f"local_fs_{new_config_file_name}")
+    
  
 if __name__ == "__main__":
 
     # get the start time
     st = time.time()
     tg = TrafficGenerator(config['apiServerIp'], apiServerUsername=config["apiServerUsername"],
-                        apiServerPassword=config["apiServerPassword"], sessionId=32)
+                        apiServerPassword=config["apiServerPassword"], sessionId=35)
     tg._connect_ports()
     tg._create_topology()
+    tg._download_configuration_file()
     tg._start_protocols()
     tg._start_traffic()
     tg._fetch_stats()
@@ -144,6 +153,3 @@ if __name__ == "__main__":
     elapsed_time = et - st
     print('Execution time:', elapsed_time, 'seconds')
     
-# Execution time for profile approcah vs 
-# Run Traffic for 2 Mins
-# Enable Tracking
