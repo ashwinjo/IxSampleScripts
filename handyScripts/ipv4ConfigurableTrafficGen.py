@@ -1,6 +1,9 @@
 from ixnetwork_restpy import SessionAssistant
 import json
 
+import time
+
+
 def getIxiaConfiguration():
     with open("testCaseTgenConfig.json", "r+") as f:
         config = json.loads(f.read())
@@ -42,6 +45,7 @@ class TrafficGenerator(object):
     
     def _create_topology(self):
         self.ipv4list = []
+        self.ngpool = []
         
         for item in self.config:
             if "endpoint" in item:
@@ -52,7 +56,6 @@ class TrafficGenerator(object):
                 
                 ethernet = devgrp.Ethernet.add(Name=self.config[item]["topology"]["devicegroup"]["ethernet"]["name"])
                 ethernet.EnableVlans.Single(True)
-                ethernet.Vlan.find()[0].VlanId.Increment(start_value=103, step_value=0)
                 
                 # Creating IPv4 - Layer 3
 
@@ -63,8 +66,27 @@ class TrafficGenerator(object):
                                          step_value=self.config[item]["topology"]["devicegroup"]["ipv4"]["gatewayIncrement"])
                 self.ipv4list.append(ipv4)
         
+        
+                self.session_assistant.Ixnetwork.info('Configuring BgpIpv4Peer')
+                bgp2 = ipv4.BgpIpv4Peer.add(Name=self.config[item]["topology"]["devicegroup"]["bgp"]["name"])
+                bgp2.DutIp.Increment(start_value=self.config[item]["topology"]["devicegroup"]["bgp"]["increment"], 
+                                     step_value=self.config[item]["topology"]["devicegroup"]["bgp"]["step_value"])
+                bgp2.Type.Single('external')
+                bgp2.LocalAs2Bytes.Increment(start_value=self.config[item]["topology"]["devicegroup"]["bgp"]["localas2value"], 
+                                             step_value=0)
+
+                self.session_assistant.Ixnetwork.info('Configuring Network Group 2')
+                networkGroup = devgrp.NetworkGroup.add(Name=self.config[item]["topology"]["networkpools"]["name"], 
+                                                        Multiplier=self.config[item]["topology"]["networkpools"]["multiplier"])
+                ipv4PrefixPool = networkGroup.Ipv4PrefixPools.add(NumberOfAddresses=self.config[item]["topology"]["networkpools"]["numberOfIpv4PrefixPools"])
+                
+                ipv4PrefixPool.NetworkAddress.Increment(start_value=self.config[item]["topology"]["networkpools"]["start_value"], 
+                                                        step_value=self.config[item]["topology"]["networkpools"]["step_value"])
+                                                        
+                ipv4PrefixPool.PrefixLength.Single(self.config[item]["topology"]["networkpools"]["prefix_length"])
+                self.ngpool.append(ipv4PrefixPool)
             
-    
+               
     def _start_protocols(self):
         self.session_assistant.Ixnetwork.StartAllProtocols(Arg1='sync')
         # Create Protocol Sessions
@@ -83,7 +105,9 @@ class TrafficGenerator(object):
 
         
             self.session_assistant.Ixnetwork.info('Add endpoint flow group')
-            trafficItem.EndpointSet.add(Sources=self.ipv4list[0], Destinations=self.ipv4list[1])
+            trafficItem.EndpointSet.add(Sources=self.ngpool[0], Destinations=self.ngpool[1])
+            trafficItem.Tracking.find().TrackBy= ti["TrackingType"]
+                                                   
             trafficItem.Generate()
             self.session_assistant.Ixnetwork.Traffic.Apply()
             self.session_assistant.Ixnetwork.Traffic.StartStatelessTrafficBlocking()
@@ -97,11 +121,15 @@ class TrafficGenerator(object):
                 rowNumber, flowStat['Tx Port'], flowStat['Rx Port'],
                 flowStat['Tx Frames'], flowStat['Rx Frames']))
         self.session_assistant.Ixnetwork.Traffic.StopStatelessTrafficBlocking()
+       
     
  
  
  
 if __name__ == "__main__":
+
+    # get the start time
+    st = time.time()
     tg = TrafficGenerator(config['apiServerIp'], apiServerUsername=config["apiServerUsername"],
                         apiServerPassword=config["apiServerPassword"], sessionId=32)
     tg._connect_ports()
@@ -109,3 +137,13 @@ if __name__ == "__main__":
     tg._start_protocols()
     tg._start_traffic()
     tg._fetch_stats()
+    
+    et = time.time()
+
+    # get the execution time
+    elapsed_time = et - st
+    print('Execution time:', elapsed_time, 'seconds')
+    
+# Execution time for profile approcah vs 
+# Run Traffic for 2 Mins
+# Enable Tracking
