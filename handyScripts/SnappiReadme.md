@@ -55,11 +55,18 @@ docker pull ghcr.io/open-traffic-generator/ixia-c-traffic-engine:latest
   docker run -d --name Ixia-c-Controller --network=host \ ghcr.io/open-traffic-generator/ixia-c-controller:latest --accept-eula
   ```
 
+<img width="1310" alt="Pasted Graphic 2" src="https://github.com/ashwinjo/IxSampleScripts/assets/120066169/c84dba80-2e22-4479-9d89-1ccbdeffd2b7">
+
+<img width="1405" alt="Pasted Graphic 3" src="https://github.com/ashwinjo/IxSampleScripts/assets/120066169/2b19d2c8-db95-4234-a6d6-823909ea9771">
+
+<img width="833" alt="Pasted Graphic" src="https://github.com/ashwinjo/IxSampleScripts/assets/120066169/ec752f27-7857-48a1-91b0-6325a2769399">
+
+<img width="1013" alt="Pasted Graphic 1" src="https://github.com/ashwinjo/IxSampleScripts/assets/120066169/0a13177d-7dee-4fa1-a47b-f00bee140aed">
 
 > Lets Install test dependencies
 ```bash
-* pip3 install snappi
-* pip3 install pytest
+pip3 install snappi
+pip3 install pytest
 ```
 
 Download file from 
