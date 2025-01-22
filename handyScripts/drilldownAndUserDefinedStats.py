@@ -13,7 +13,7 @@ flow_stats_view = session.Ixnetwork.Statistics.find().View.find(Caption = "Flow 
 # We are getting the drilldown here. Arg2 = Row Number in view and Arg3 is value in the dropdown
 flow_stats_drill_down_for_uds = flow_stats_view.DoDrillDownByOption(Arg2=1, Arg3='Ethernet:Outer VLAN ID (4 bits) at offset 124') # 'Show All Egress'
 
-time.sleep(30) # When we do drill down on Flow Statistics it takes some time for User def stats to populate.
+time.sleep(30) # When we do drill down on Flow Statistics it takes some time for User def stats to populate. (Only for first time)
 
 # Now we have a tab for User Defined Statistics lets get values from that
 uds_view = session.Ixnetwork.Statistics.find().View.find(Caption = "User Defined Statistics")
