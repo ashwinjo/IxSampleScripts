@@ -4,7 +4,7 @@ import time
 final_table = []
 apiServerIp = '10.36.74.13'
 
-session = SessionAssistant(IpAddress=apiServerIp, RestPort=None, UserName='admin', Password='admin', 
+session = SessionAssistant(IpAddress=apiServerIp, RestPort=None, UserName='admin', Password='XXX', 
                             SessionName=None, SessionId=1, ApiKey=None,
                             ClearConfig=False)
 
