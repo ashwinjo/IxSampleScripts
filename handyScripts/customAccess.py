@@ -50,7 +50,6 @@ for key, ti in row_values.items():
             tabl.append(individual_egress_tracking)
         else:
             tabl.append(individual_egress_tracking) # means these are egress rows
-    break
     
 t= tabulate(tabl, tablefmt="grid")
 print(t)
