@@ -1,0 +1,125 @@
+[
+  {
+    "application": "string",
+    "config": {
+      "configTypeName": "string",
+      "Config": {
+        "AttackProfiles": [
+          "string"
+        ],
+        "ConfigValidation": "string",
+        "CustomDashboards": "string",
+        "ExpectedDiskSpace": [
+          {
+            "message": {
+              "perMinute": "string",
+              "perSecond": "string",
+              "total": "string"
+            },
+            "prettySize": {
+              "perMinute": "string",
+              "perSecond": "string",
+              "total": "string"
+            },
+            "size": {
+              "perMinute": 0,
+              "perSecond": 0,
+              "total": 0
+            }
+          }
+        ],
+        "NetworkProfiles": [
+          {
+            "DUTNetworkSegment": [
+              "string"
+            ],
+            "IPNetworkSegment": [
+              "string"
+            ],
+            "id": "string",
+            "links": [
+              {
+                "contentType": "string",
+                "href": "string",
+                "method": "string",
+                "name": "string",
+                "referencesCount": 0,
+                "rel": "string",
+                "type": "string"
+              }
+            ]
+          }
+        ],
+        "TrafficProfiles": [
+          "string"
+        ],
+        "links": [
+          {
+            "contentType": "string",
+            "href": "string",
+            "method": "string",
+            "name": "string",
+            "referencesCount": 0,
+            "rel": "string",
+            "type": "string"
+          }
+        ],
+        "validate": [
+          "string"
+        ]
+      },
+      "links": [
+        {
+          "contentType": "string",
+          "href": "string",
+          "method": "string",
+          "name": "string",
+          "referencesCount": 0,
+          "rel": "string",
+          "type": "string"
+        }
+      ],
+      "name": "string"
+    },
+    "configName": "string",
+    "configUrl": "string",
+    "links": [
+      {
+        "contentType": "string",
+        "href": "string",
+        "method": "string",
+        "name": "string",
+        "referencesCount": 0,
+        "rel": "string",
+        "type": "string"
+      }
+    ],
+    "meta": [
+      {
+        "id": 0,
+        "key": "string",
+        "value": "string"
+      }
+    ],
+    "name": "string",
+    "pinned": true,
+    "state": "string",
+    "test": {
+      "dashboards": [
+        {
+          "id": "string",
+          "name": "string"
+        }
+      ],
+      "defaultDashboardIndex": 0,
+      "defaultPollingInterval": 0,
+      "status": "string",
+      "testDetails": "string",
+      "testDuration": "0",
+      "testId": "string",
+      "testInitialized": "0",
+      "testStarted": "0",
+      "testStopped": "0"
+    }
+  }
+]
