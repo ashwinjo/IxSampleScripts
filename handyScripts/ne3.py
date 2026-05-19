@@ -506,3 +506,47 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+""" Sample Output:
+
+ashwin.joshi@KJ4FGV207R ~ % /usr/local/bin/python3 /Users/ashwin.joshi/ne3.py
+
+Operations:
+  1) Run configured delay sequence (GET verify each step)
+  2) Interactive delay loop (enter value + unit each time)
+  3) Both — sequence, then interactive loop
+Choose [1]: 1
+INFO:__main__:Authenticated to 10.36.84.18
+Logged in to 10.36.84.18
+
+Before:
+  Profiles on port:
+    'Port1-msoftProfile': profile.enabled=True | ethernetDelay.enabled=True | delay=200.0 MS
+
+
+Port 1 | profile 'Port1-msoftProfile' | steps: 100 MS, 200 MS, 300 MS
+PUT uses minimal lab payload (profiles only, enabled='true')
+
+--- Step 1/3: 100 MS ---
+  Payload: {"profiles": [{"tag": "Port1-msoftProfile", "enabled": "true", "ethernetDelay": {"delay": 100, "pdvMode": "NONE", "units": "MS", "enabled": "true"}}]}
+  PUT HTTP 200
+  [OK] expected=100 MS | GET delay=100.0 MS | profile.enabled=True | ethernetDelay.enabled=True | pdvMode=NONE
+  Profiles on port:
+    'Port1-msoftProfile': profile.enabled=True | ethernetDelay.enabled=True | delay=100.0 MS
+
+--- Step 2/3: 200 MS ---
+  Payload: {"profiles": [{"tag": "Port1-msoftProfile", "enabled": "true", "ethernetDelay": {"delay": 200, "pdvMode": "NONE", "units": "MS", "enabled": "true"}}]}
+  PUT HTTP 200
+  [OK] expected=200 MS | GET delay=200.0 MS | profile.enabled=True | ethernetDelay.enabled=True | pdvMode=NONE
+  Profiles on port:
+    'Port1-msoftProfile': profile.enabled=True | ethernetDelay.enabled=True | delay=200.0 MS
+
+--- Step 3/3: 300 MS ---
+  Payload: {"profiles": [{"tag": "Port1-msoftProfile", "enabled": "true", "ethernetDelay": {"delay": 300, "pdvMode": "NONE", "units": "MS", "enabled": "true"}}]}
+  PUT HTTP 200
+  [OK] expected=300 MS | GET delay=300.0 MS | profile.enabled=True | ethernetDelay.enabled=True | pdvMode=NONE
+  Profiles on port:
+    'Port1-msoftProfile': profile.enabled=True | ethernetDelay.enabled=True | delay=300.0 MS
+
+ashwin.joshi@KJ4FGV207R ~ % 
+"""
