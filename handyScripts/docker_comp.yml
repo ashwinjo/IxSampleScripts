@@ -1,0 +1,63 @@
+# =============================================================================
+# DEVELOPMENT Docker Compose - Separate Frontend & Backend Services
+# =============================================================================
+
+services:
+  # Backend - FastAPI/Uvicorn with background pollers
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    image: ixia-backend:latest
+    container_name: ixia-backend
+    ports:
+      - "${BACKEND_PORT}:3001"
+    volumes:
+      - ixia-data:/app/data
+    environment:
+      PORT: ${BACKEND_PORT}
+      DEBUG: "False"
+      DATABASE_PATH: /app/data/inventory.db
+      CORS_ORIGINS: "*"
+      HOST: 0.0.0.0
+      MINIMAL_MODE: "false"
+      CLEAN_DB_ON_START: ${CLEAN_DB_ON_START}
+      ADK_URL: ${ADK_URL}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - ixia-network
+
+  # Frontend - Vite Dev Server (with hot reload)
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    image: ixia-frontend:latest
+    container_name: ixia-frontend
+    ports:
+      - "${FRONTEND_PORT}:5174"
+    environment:
+      PORT: ${FRONTEND_PORT}
+      VITE_BACKEND_URL: http://backend:3001
+      VITE_ADK_URL: ${VITE_ADK_URL}
+      NODE_ENV: development
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - ixia-network
+
+networks:
+  ixia-network:
+    driver: bridge
+
+volumes:
+  ixia-data:
+    driver: local
